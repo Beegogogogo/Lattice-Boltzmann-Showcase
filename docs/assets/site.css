@@ -329,13 +329,13 @@ p {
 
 .case-card {
   display: grid;
-  grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr);
+  grid-template-columns: minmax(240px, 0.72fr) minmax(0, 1.28fr);
   overflow: hidden;
 }
 
 .case-media {
   position: relative;
-  min-height: 280px;
+  min-height: 240px;
   background:
     radial-gradient(circle at 22% 18%, rgba(211, 169, 77, 0.28), transparent 28%),
     linear-gradient(155deg, #14363b, #28565d 56%, #0f2326 100%);
@@ -361,6 +361,15 @@ p {
   object-fit: cover;
   position: absolute;
   inset: 0;
+}
+
+.case-media img {
+  width: calc(100% - 28px);
+  height: calc(100% - 28px);
+  inset: 14px;
+  object-fit: contain;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .case-media-overlay {
@@ -562,6 +571,6 @@ code {
   }
 
   .case-media {
-    min-height: 240px;
+    min-height: 220px;
   }
 }
