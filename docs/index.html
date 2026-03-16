@@ -24,7 +24,7 @@
         </p>
         <div class="hero-actions">
           <a class="button primary" href="#cases">Browse Benchmarks</a>
-          <a class="button secondary" href="#equations">Core Equations</a>
+          <a class="button secondary" href="#suite">Validation Structure</a>
           <a class="button secondary" href="#workflow">Workflow</a>
           <a class="button secondary" href="https://github.com/Beegogogogo/Lattice-Boltzmann-Showcase" target="_blank" rel="noreferrer">Open Showcase Repo</a>
         </div>
@@ -92,61 +92,6 @@
         </div>
       </section>
 
-      <section id="equations" class="section">
-        <div class="section-heading reveal">
-          <p class="section-kicker">Core Equations</p>
-          <h2>Keep the lattice Boltzmann model explicit</h2>
-          <p>
-            Because this page represents a lattice Boltzmann solver, the governing equations should show both the mesoscopic evolution rule
-            and the recovered macroscopic flow equations used by the canonical benchmark suite.
-          </p>
-        </div>
-        <div class="equation-grid">
-          <article class="equation-card reveal">
-            <h3>Lattice Boltzmann evolution</h3>
-            <div class="equation-block">
-              \[
-              f_i(\mathbf{x}+\mathbf{c}_i \Delta t, t+\Delta t) - f_i(\mathbf{x}, t)
-              = -\frac{1}{\tau}\left(f_i-f_i^{eq}\right) + \Delta t\,F_i
-              \]
-            </div>
-            <p>The solver advances discrete distribution functions by streaming, collision, and optional forcing, which is the starting point for every showcased case.</p>
-          </article>
-          <article class="equation-card reveal">
-            <h3>Macroscopic recovery</h3>
-            <div class="equation-block">
-              \[
-              \rho = \sum_i f_i, \qquad \rho \mathbf{u} = \sum_i \mathbf{c}_i f_i
-              \]
-              \[
-              \frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \mathbf{u}) = 0,
-              \qquad
-              \frac{\partial (\rho \mathbf{u})}{\partial t}
-              + \nabla \cdot (\rho \mathbf{u} \otimes \mathbf{u})
-              = -\nabla p + \mu \nabla^2 \mathbf{u}
-              \]
-            </div>
-            <p>These relations connect the lattice populations to the flow quantities compared against benchmark references and published profiles.</p>
-          </article>
-          <article class="equation-card reveal">
-            <h3>Benchmark references</h3>
-            <div class="equation-block">
-              \[
-              \mathbf{u}_{TG}(t) \propto \exp(-\alpha \nu t),
-              \qquad
-              u_{P}(r) \propto 1-r^2
-              \]
-              \[
-              \mathbf{u}\big|_{\text{walls}} = 0,
-              \qquad
-              \mathbf{u}\big|_{\text{lid}} = U_{lid}\,\mathbf{e}_x
-              \]
-            </div>
-            <p>Taylor-Green measures decay, Poiseuille measures profile recovery, and the driven cavity measures no-slip wall response and recirculating structures.</p>
-          </article>
-        </div>
-      </section>
-
       <section id="suite" class="section">
         <div class="section-heading reveal">
           <p class="section-kicker">Benchmark Structure</p>
@@ -191,8 +136,8 @@
           <p class="section-kicker">Validation Gallery</p>
           <h2>Six core benchmark panels</h2>
           <p>
-            The gallery is now organized by dimension rather than by a single featured case.
-            This keeps the site balanced and leaves space for later application sections.
+            Each panel now keeps the scientific story together: case description, media slot, and the governing or benchmark equation
+            are shown in the same place instead of being split across separate page sections.
           </p>
         </div>
         <div class="case-group reveal">

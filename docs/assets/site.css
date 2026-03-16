@@ -416,6 +416,32 @@ p {
   margin-bottom: 8px;
 }
 
+.case-section-label {
+  margin: 0 0 8px;
+  color: var(--teal);
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+}
+
+.case-description {
+  margin-bottom: 16px;
+}
+
+.case-equation-card {
+  margin-bottom: 16px;
+  padding: 16px;
+  border: 1px solid rgba(16, 39, 42, 0.08);
+  border-radius: 18px;
+  background: rgba(16, 39, 42, 0.04);
+}
+
+.case-equation-block {
+  margin: 0;
+  background: rgba(255, 255, 255, 0.78);
+}
+
 .case-details {
   display: grid;
   gap: 10px;
