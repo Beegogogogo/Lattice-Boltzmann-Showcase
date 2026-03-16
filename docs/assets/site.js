@@ -86,6 +86,7 @@ u(y)=U_{\\max}\\left(1-\\left(\\frac{2y}{H}\\right)^2\\right)
     title: "3-D Taylor-Green Vortex",
     family: "taylor_green",
     dimension: "3D",
+    layout: "wrap",
     mediaFit: "contain",
     mediaAspectRatio: "666 / 795",
     tag: "Taylor-Green family",
@@ -177,7 +178,7 @@ const caseFamilies = [
   }
 ];
 
-const MEDIA_VERSION = "20260316-20";
+const MEDIA_VERSION = "20260316-21";
 
 function createPlaceholder(caseData) {
   const shell = document.createElement("div");
@@ -234,12 +235,15 @@ async function attachMedia(container, caseData) {
 
 function createCaseCard(caseData) {
   const card = document.createElement("article");
-  card.className = "case-card reveal";
+  card.className = `case-card reveal${caseData.layout === "wrap" ? " case-card--wrap" : ""}`;
 
   const media = document.createElement("div");
   media.className = "case-media";
   if (caseData.mediaFit === "contain") {
     media.classList.add("case-media--contain");
+  }
+  if (caseData.layout === "wrap") {
+    media.classList.add("case-media--wrap");
   }
   if (caseData.mediaAspectRatio) {
     media.style.aspectRatio = caseData.mediaAspectRatio;
@@ -276,8 +280,14 @@ function createCaseCard(caseData) {
     <div class="equation-block case-equation-block">${caseData.equation}</div>
   `;
 
-  copy.append(head, descriptionLabel, description, equationCard);
-  card.append(media, copy);
+  if (caseData.layout === "wrap") {
+    copy.classList.add("case-copy--wrap");
+    copy.append(media, head, descriptionLabel, description, equationCard);
+    card.append(copy);
+  } else {
+    copy.append(head, descriptionLabel, description, equationCard);
+    card.append(media, copy);
+  }
   attachMedia(media, caseData);
 
   return card;
