@@ -176,7 +176,7 @@ const caseFamilies = [
   }
 ];
 
-const MEDIA_VERSION = "20260316-18";
+const MEDIA_VERSION = "20260316-19";
 
 function createPlaceholder(caseData) {
   const shell = document.createElement("div");

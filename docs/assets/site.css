@@ -377,6 +377,10 @@ p {
   object-fit: contain;
 }
 
+.case-media--contain {
+  background: #f8f4ea;
+}
+
 .case-copy {
   padding: 22px;
 }
