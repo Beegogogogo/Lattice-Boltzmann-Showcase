@@ -66,9 +66,7 @@ body::before {
 }
 
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.8fr);
-  gap: 24px;
+  display: block;
   overflow: hidden;
   position: relative;
 }
@@ -231,17 +229,6 @@ p {
   font-size: 1.8rem;
 }
 
-.hero-panel {
-  padding: 18px;
-  border-radius: var(--radius-lg);
-  background: linear-gradient(180deg, rgba(16, 39, 42, 0.94), rgba(27, 56, 60, 0.92));
-  color: #f3ede2;
-}
-
-.hero-panel p {
-  color: rgba(243, 237, 226, 0.78);
-}
-
 .panel-stack,
 .scope-grid,
 .equation-grid,
@@ -266,22 +253,37 @@ p {
   border-color: rgba(255, 255, 255, 0.12);
 }
 
-.hero-panel .panel-card:nth-child(1) {
+.direction-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.direction-card {
+  color: #f3ede2;
+}
+
+.direction-card p:last-child {
+  margin-bottom: 0;
+  color: rgba(243, 237, 226, 0.82);
+}
+
+.direction-card--medical {
   background: linear-gradient(135deg, rgba(12, 86, 90, 0.9), rgba(25, 128, 137, 0.5));
   border-color: rgba(113, 229, 223, 0.26);
 }
 
-.hero-panel .panel-card:nth-child(2) {
+.direction-card--reaction {
   background: linear-gradient(135deg, rgba(110, 51, 25, 0.9), rgba(181, 93, 49, 0.52));
   border-color: rgba(255, 193, 132, 0.24);
 }
 
-.hero-panel .panel-card:nth-child(3) {
+.direction-card--crystal {
   background: linear-gradient(135deg, rgba(92, 76, 25, 0.9), rgba(154, 128, 45, 0.5));
   border-color: rgba(240, 214, 130, 0.24);
 }
 
-.hero-panel .panel-card:nth-child(4) {
+.direction-card--particle {
   background: linear-gradient(135deg, rgba(32, 73, 41, 0.92), rgba(58, 132, 86, 0.48));
   border-color: rgba(152, 231, 181, 0.24);
 }
@@ -616,6 +618,10 @@ code {
     grid-template-columns: 1fr;
   }
 
+  .direction-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .hero-metrics {
     grid-template-columns: 1fr;
   }
@@ -655,6 +661,10 @@ code {
 
   .case-head {
     display: grid;
+  }
+
+  .direction-grid {
+    grid-template-columns: 1fr;
   }
 
   .case-media--wrap {
