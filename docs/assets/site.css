@@ -132,6 +132,29 @@ p {
   font-size: 1.06rem;
 }
 
+.hero-identity {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.hero-identity-name {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.hero-identity-link {
+  color: var(--teal);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(15, 139, 141, 0.28);
+}
+
+.hero-identity-link:hover {
+  border-bottom-color: currentColor;
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
