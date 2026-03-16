@@ -25,7 +25,6 @@
         <div class="hero-actions">
           <a class="button primary" href="#cases">Browse Benchmarks</a>
           <a class="button secondary" href="#suite">Validation Structure</a>
-          <a class="button secondary" href="#workflow">Workflow</a>
           <a class="button secondary" href="https://github.com/Beegogogogo/Lattice-Boltzmann-Showcase" target="_blank" rel="noreferrer">Open Showcase Repo</a>
         </div>
         <ul class="hero-metrics">
@@ -136,39 +135,6 @@
           <p class="section-kicker">Validation Gallery</p>
         </div>
         <div id="case-family-stack" class="case-family-stack"></div>
-      </section>
-
-      <section id="workflow" class="section split-layout workflow-section">
-        <div class="section-copy reveal">
-          <p class="section-kicker">Workflow</p>
-          <h2>From benchmark output to media slot</h2>
-          <p>
-            The same pipeline can be reused for all six benchmark panels now, and later for aneurysm or particle videos:
-            run the case in the solver workspace, export visualization frames, then copy the final media into the public showcase repo.
-          </p>
-          <pre class="code-block"><code># 1. Run a solver benchmark in your local workspace
-# 2. Export frames or a short MP4 from the post-processing step
-# 3. Place the media in this repo using the case slug
-
-docs/assets/media/2d_taylor_green.mp4
-docs/assets/media/3d_poiseuille.mp4
-docs/assets/media/2d_driven_cavity.mp4
-</code></pre>
-        </div>
-        <div class="workflow-cards reveal">
-          <article class="workflow-card">
-            <h3>1. Benchmark generation</h3>
-            <p>Run the 2D or 3D benchmark, collect the reference metric, and keep the final visualization sequence consistent across cases.</p>
-          </article>
-          <article class="workflow-card">
-            <h3>2. Media conversion</h3>
-            <p>Use ParaView, Python, or ffmpeg to turn solver snapshots into short clips with clean color maps and optional annotations.</p>
-          </article>
-          <article class="workflow-card">
-            <h3>3. Public publishing</h3>
-            <p>Drop the media into `docs/assets/media/` and let GitHub Pages serve the updated validation gallery automatically.</p>
-          </article>
-        </div>
       </section>
 
       <section id="future" class="section">
