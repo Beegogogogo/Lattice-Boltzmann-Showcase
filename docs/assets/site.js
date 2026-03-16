@@ -5,20 +5,42 @@ const cases = [
     dimension: "2D",
     tag: "Taylor-Green family",
     metric: "Decay-rate and L2 field agreement",
-    description: "Periodic decaying-vortex benchmark for checking transient viscous dissipation, symmetry preservation, and field-level agreement with the analytical decay trend.",
-    physics: "Periodic incompressible-like vortex decay",
-    reference: "Closed-form velocity decay in a periodic box.",
+    descriptionHtml: `
+      <p>
+        This testcase is implemented in <code>Test_2d_taylor_green.cpp</code> as a regression run that subclasses
+        <code>Loop_flow_heat_full_lb</code> and explicitly overwrites the default initialization with
+        <code>TAYLORGREEN2D</code>. In the current input file the flow field is defined on a
+        <code>128 x 128</code> planar grid with a thin <code>z</code>-extent for parallel execution, and the initial
+        velocity amplitude is read directly from the <code>Flow Field Initial Conditions</code> block
+        with <code>u_0 = 0.1</code>.
+      </p>
+      <p>
+        During the run, the code evaluates the analytical Taylor-Green velocity field at the physical coordinates and
+        current physical time, then compares the numerical and analytical solutions through a normalized domain-wide
+        <code>L2</code> error. The test is therefore not only a visualization case: it is a quantitative verification
+        case for initialization, viscous decay, and field accuracy over time. In the current test logic the initial
+        field is required to match at machine precision, and all later snapshots are checked against an
+        <code>L2</code> tolerance of <code>0.04</code>.
+      </p>
+    `,
     equationTitle: "Analytical benchmark field",
     equation: `
 \\[
-u(x,y,t)=U_0 \\cos(kx)\\sin(ky)e^{-2\\nu k^2 t},
+u_x(x,y,t)=u_0 \\sin(sx)\\cos(sy)\\exp\\left(-2s^2\\nu t\\right),
 \\qquad
-v(x,y,t)=-U_0 \\sin(kx)\\cos(ky)e^{-2\\nu k^2 t}
+u_y(x,y,t)=-u_0 \\cos(sx)\\sin(sy)\\exp\\left(-2s^2\\nu t\\right),
+\\qquad
+s=\\frac{2\\pi}{L}
+\\]
+\\[
+L_2(t)=\\sqrt{
+\\frac{\\sum_{\\Omega}\\left\\|\\mathbf{u}_{num}-\\mathbf{u}_{exact}\\right\\|^2}
+{\\sum_{\\Omega}\\left\\|\\mathbf{u}_{exact}\\right\\|^2}
+}
 \\]
 `,
-    workflow: "Export velocity or vorticity snapshots and compare the decay against the analytical reference over time.",
     media: "docs/assets/media/2d_taylor_green.mp4",
-    note: "A strong first validation panel because the benchmark is compact, classical, and visually clean."
+    details: []
   },
   {
     slug: "2d_poiseuille",
@@ -241,9 +263,13 @@ function createCaseCard(caseData) {
   descriptionLabel.className = "case-section-label";
   descriptionLabel.textContent = "Case description";
 
-  const description = document.createElement("p");
+  const description = document.createElement("div");
   description.className = "case-description";
-  description.textContent = caseData.description;
+  if (caseData.descriptionHtml) {
+    description.innerHTML = caseData.descriptionHtml;
+  } else {
+    description.textContent = caseData.description;
+  }
 
   const equationCard = document.createElement("div");
   equationCard.className = "case-equation-card";
@@ -254,13 +280,24 @@ function createCaseCard(caseData) {
 
   const details = document.createElement("div");
   details.className = "case-details";
-  details.appendChild(createDetailRow("Physics", caseData.physics));
-  details.appendChild(createDetailRow("Reference", caseData.reference));
-  details.appendChild(createDetailRow("Workflow", caseData.workflow));
-  details.appendChild(createDetailRow("Media slot", caseData.media, true));
-  details.appendChild(createDetailRow("Presentation note", caseData.note));
+  const detailRows = caseData.details !== undefined
+    ? caseData.details
+    : [
+        { label: "Physics", value: caseData.physics },
+        { label: "Reference", value: caseData.reference },
+        { label: "Workflow", value: caseData.workflow },
+        { label: "Media slot", value: caseData.media, isCode: true },
+        { label: "Presentation note", value: caseData.note }
+      ];
 
-  copy.append(head, descriptionLabel, description, equationCard, details);
+  for (const row of detailRows) {
+    details.appendChild(createDetailRow(row.label, row.value, row.isCode === true));
+  }
+
+  copy.append(head, descriptionLabel, description, equationCard);
+  if (detailRows.length > 0) {
+    copy.append(details);
+  }
   card.append(media, copy);
   attachMedia(media, caseData);
 
