@@ -113,9 +113,14 @@ h3 {
 }
 
 h1 {
-  font-size: clamp(2.7rem, 6vw, 5.8rem);
+  font-size: clamp(2.7rem, 5.2vw, 5.2rem);
   max-width: none;
-  text-wrap: balance;
+  line-height: 0.96;
+  text-wrap: pretty;
+}
+
+.hero-title-line {
+  display: block;
 }
 
 h2 {
