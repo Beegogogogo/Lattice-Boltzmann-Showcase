@@ -7,30 +7,27 @@ const cases = [
     metric: "Decay-rate and L2 field agreement",
     descriptionHtml: `
       <p>
-        This testcase is implemented in <code>Test_2d_taylor_green.cpp</code> as a regression run that subclasses
-        <code>Loop_flow_heat_full_lb</code> and explicitly overwrites the default initialization with
-        <code>TAYLORGREEN2D</code>. In the current input file the flow field is defined on a
-        <code>128 x 128</code> planar grid with a thin <code>z</code>-extent for parallel execution, and the initial
-        velocity amplitude is read directly from the <code>Flow Field Initial Conditions</code> block
-        with <code>u_0 = 0.1</code>.
+        The 2-D Taylor-Green vortex is a canonical transient benchmark for viscous flow solvers.
+        It starts from a smooth periodic velocity field in which counter-rotating vortices fill the domain,
+        and the subsequent evolution is governed by viscous dissipation while the analytical spatial structure is preserved.
       </p>
       <p>
-        During the run, the code evaluates the analytical Taylor-Green velocity field at the physical coordinates and
-        current physical time, then compares the numerical and analytical solutions through a normalized domain-wide
-        <code>L2</code> error. The test is therefore not only a visualization case: it is a quantitative verification
-        case for initialization, viscous decay, and field accuracy over time. In the current test logic the initial
-        field is required to match at machine precision, and all later snapshots are checked against an
-        <code>L2</code> tolerance of <code>0.04</code>.
+        This makes the case useful for checking whether a solver captures the correct decay of vortex amplitude over time
+        without contamination from complex boundaries or geometry effects. In the expressions below,
+        <code>u_0</code> is the initial velocity scale, <code>s=2\\pi/L</code> is the domain wavenumber,
+        and <code>\\nu</code> denotes the kinematic viscosity that controls the decay rate.
       </p>
     `,
     equationTitle: "Analytical benchmark field",
     equation: `
 \\[
-u_x(x,y,t)=u_0 \\sin(sx)\\cos(sy)\\exp\\left(-2s^2\\nu t\\right),
-\\qquad
-u_y(x,y,t)=-u_0 \\cos(sx)\\sin(sy)\\exp\\left(-2s^2\\nu t\\right),
-\\qquad
-s=\\frac{2\\pi}{L}
+u_x(x,y,t)=u_0 \\sin(sx)\\cos(sy)\\exp\\left(-2s^2\\nu t\\right)
+\\]
+\\[
+u_y(x,y,t)=-u_0 \\cos(sx)\\sin(sy)\\exp\\left(-2s^2\\nu t\\right)
+\\]
+\\[
+s=\\frac{2\\pi}{L}, \\qquad \\nu=\\text{kinematic viscosity}
 \\]
 `,
     media: "docs/assets/media/2d_taylor_green.mp4",
