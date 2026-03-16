@@ -236,7 +236,6 @@ function createCaseCard(caseData) {
       <p class="case-tag">${caseData.tag}</p>
       <h3>${caseData.title}</h3>
     </div>
-    <span class="case-metric">${caseData.metric}</span>
   `;
 
   const descriptionLabel = document.createElement("p");
