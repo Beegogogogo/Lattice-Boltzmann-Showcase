@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lattice Boltzmann Showcase</title>
+  <meta name="description" content="A public scientific project page for lattice Boltzmann validation cases, equations, media, and benchmark narratives.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero section">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Lattice Boltzmann Showcase</p>
+        <h1>Scientific validation, framed for public presentation</h1>
+        <p class="hero-text">
+          This site turns benchmark cases into a coherent research narrative:
+          canonical flows, transport verification, geometry tests, and multiphysics examples
+          presented with equations, captions, and presentation-ready media.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#cases">Browse Cases</a>
+          <a class="button secondary" href="#workflow">Workflow</a>
+          <a class="button secondary" href="https://github.com/Beegogogogo/Lattice-Boltzmann-Showcase" target="_blank" rel="noreferrer">Open Showcase Repo</a>
+        </div>
+        <ul class="hero-metrics">
+          <li>
+            <span class="metric-value">8</span>
+            <span class="metric-label">Benchmark stories laid out as a gallery</span>
+          </li>
+          <li>
+            <span class="metric-value">Eqns</span>
+            <span class="metric-label">Physics and numerics shown beside each case</span>
+          </li>
+          <li>
+            <span class="metric-value">Media</span>
+            <span class="metric-label">MP4, WebM, GIF, or PNG slots per validation case</span>
+          </li>
+        </ul>
+      </div>
+      <aside class="hero-panel reveal">
+        <p class="panel-title">Repository scope</p>
+        <div class="panel-stack">
+          <article class="panel-card">
+            <h2>Public-facing narrative</h2>
+            <p>This repo is for figures, videos, equations, benchmark notes, and presentation material that can be published openly.</p>
+          </article>
+          <article class="panel-card">
+            <h2>Research communication</h2>
+            <p>Each case should explain what is being validated, what quantity is compared, and why the result matters.</p>
+          </article>
+          <article class="panel-card">
+            <h2>Decoupled from source privacy</h2>
+            <p>The scientific story can stay public even when the development repo, scripts, or implementation details remain private.</p>
+          </article>
+        </div>
+      </aside>
+    </header>
+
+    <main>
+      <section id="overview" class="section split-layout">
+        <div class="section-copy reveal">
+          <p class="section-kicker">Scientific Lens</p>
+          <h2>Three layers of evidence</h2>
+          <p>
+            A good validation page should make the structure explicit:
+            analytic recovery, geometric robustness, and multiphysics response.
+            That hierarchy helps reviewers and collaborators understand the scope quickly.
+          </p>
+        </div>
+        <div class="pillars reveal">
+          <article class="pillar">
+            <span class="pillar-index">01</span>
+            <h3>Analytic recovery</h3>
+            <p>Taylor-Green decay, Poiseuille flow, and Gaussian transport reveal whether the numerical method reproduces known solutions with controlled error.</p>
+          </article>
+          <article class="pillar">
+            <span class="pillar-index">02</span>
+            <h3>Boundary and geometry fidelity</h3>
+            <p>Curved boundaries and rotated configurations expose whether the solver behaves consistently under nontrivial geometry and orientation.</p>
+          </article>
+          <article class="pillar">
+            <span class="pillar-index">03</span>
+            <h3>Coupled dynamics</h3>
+            <p>Conservation, acoustic damping, and particle settling broaden the story beyond single-physics benchmark recovery.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="equations" class="section">
+        <div class="section-heading reveal">
+          <p class="section-kicker">Governing Equations</p>
+          <h2>Core equations kept visible</h2>
+          <p>These are broad enough to frame the gallery while staying readable on a landing page.</p>
+        </div>
+        <div class="equation-grid">
+          <article class="equation-card reveal">
+            <h3>Weakly compressible flow</h3>
+            <div class="equation-block">
+              \[
+              \frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \mathbf{u}) = 0
+              \]
+              \[
+              \frac{\partial (\rho \mathbf{u})}{\partial t}
+              + \nabla \cdot (\rho \mathbf{u} \otimes \mathbf{u})
+              = -\nabla p + \nabla \cdot \left[ \mu \left( \nabla \mathbf{u} + \nabla \mathbf{u}^{T} \right) \right] + \rho \mathbf{f}
+              \]
+            </div>
+            <p>Frames vortex decay, channel flow, rotated inflow tests, and mass-conservation monitoring.</p>
+          </article>
+          <article class="equation-card reveal">
+            <h3>Advection-diffusion transport</h3>
+            <div class="equation-block">
+              \[
+              \frac{\partial \phi}{\partial t} + \mathbf{u} \cdot \nabla \phi = D \nabla^2 \phi
+              \]
+            </div>
+            <p>Useful for Gaussian hill benchmarks and for explaining temperature or species verification movies.</p>
+          </article>
+          <article class="equation-card reveal">
+            <h3>Reference profiles and decay laws</h3>
+            <div class="equation-block">
+              \[
+              u_y(x) \propto \left[ \left(\frac{H}{2}\right)^{(n+1)/n} - \left| \frac{H}{2} - x \right|^{(n+1)/n} \right]
+              \]
+              \[
+              \mathbf{u}(x,y,t) = \mathbf{u}_0(x,y)\, \exp\!\left(-2k^2 \nu t\right)
+              \]
+            </div>
+            <p>Channel-flow profiles and Taylor-Green decay make it easy to display quantitative agreement directly beside the animation.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="cases" class="section">
+        <div class="section-heading reveal">
+          <p class="section-kicker">Validation Gallery</p>
+          <h2>Drop in media and the gallery will render it</h2>
+          <p>
+            Put an MP4, WebM, GIF, or PNG in <code>docs/assets/media/</code> with the case slug as the filename.
+            Until then, the page shows a built-in placeholder for each case.
+          </p>
+        </div>
+        <div id="case-grid" class="case-grid"></div>
+      </section>
+
+      <section id="workflow" class="section split-layout workflow-section">
+        <div class="section-copy reveal">
+          <p class="section-kicker">Workflow</p>
+          <h2>From simulation output to public media</h2>
+          <p>
+            This repository is the presentation layer. Generate data in your solver environment,
+            convert the output to a short animation or figure, and publish only the media and benchmark explanation here.
+          </p>
+          <pre class="code-block"><code># 1. Run the benchmark in your solver workspace
+# example: Taylor-Green regression + HDF export
+
+# 2. Convert snapshots to presentation media
+ffmpeg -framerate 12 -i frame_%04d.png -pix_fmt yuv420p 2d_taylor_green.mp4
+
+# 3. Copy the media into this repo
+docs/assets/media/2d_taylor_green.mp4
+</code></pre>
+        </div>
+        <div class="workflow-cards reveal">
+          <article class="workflow-card">
+            <h3>1. Generate benchmark data</h3>
+            <p>Run the case locally, collect HDF snapshots or plots, and verify the quantitative metric you want to present.</p>
+          </article>
+          <article class="workflow-card">
+            <h3>2. Export media</h3>
+            <p>Use ParaView, Python, or ffmpeg to produce a short clip or still image with clean captions and a scalar bar if needed.</p>
+          </article>
+          <article class="workflow-card">
+            <h3>3. Publish the story</h3>
+            <p>Push the media to this repo and let GitHub Pages serve a clean scientific landing page without exposing the private source tree.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="structure" class="section">
+        <div class="section-heading reveal">
+          <p class="section-kicker">Project Map</p>
+          <h2>Where to extend the site</h2>
+        </div>
+        <div class="structure-grid">
+          <article class="structure-card reveal">
+            <h3>Site files</h3>
+            <pre class="code-block"><code>docs/
+  index.html
+  .nojekyll
+  assets/
+    site.css
+    site.js
+    media/
+</code></pre>
+          </article>
+          <article class="structure-card reveal">
+            <h3>Media naming convention</h3>
+            <pre class="code-block"><code>docs/assets/media/2d_taylor_green.mp4
+docs/assets/media/2d_poiseuille.mp4
+docs/assets/media/gaussian_hill.gif
+docs/assets/media/particle_sed2.png
+</code></pre>
+          </article>
+          <article class="structure-card reveal">
+            <h3>Publishing note</h3>
+            <p>
+              In repository settings, deploy GitHub Pages from branch <code>master</code> and folder <code>/docs</code>.
+              After that, each push will refresh the public site automatically.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer section reveal">
+      <p>Lattice Boltzmann showcase scaffold for public benchmark presentation, scientific explanation, and media-based communication.</p>
+      <p class="footer-note">Next step: replace placeholders with exported case media and add paper, DOI, or contact links when available.</p>
+    </footer>
+  </div>
+
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <script defer src="assets/site.js"></script>
+</body>
+</html>
