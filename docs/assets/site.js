@@ -2,6 +2,7 @@ const cases = [
   {
     slug: "2d_taylor_green",
     title: "2-D Taylor-Green Vortex",
+    family: "taylor_green",
     dimension: "2D",
     tag: "Taylor-Green family",
     metric: "Decay-rate and L2 field agreement",
@@ -36,6 +37,7 @@ s=\\frac{2\\pi}{L}, \\qquad \\nu=\\text{kinematic viscosity}
   {
     slug: "2d_poiseuille",
     title: "2-D Poiseuille Flow",
+    family: "poiseuille",
     dimension: "2D",
     tag: "Poiseuille family",
     metric: "Centerline/profile agreement",
@@ -55,6 +57,7 @@ u(y)=U_{\\max}\\left(1-\\left(\\frac{2y}{H}\\right)^2\\right)
   {
     slug: "2d_driven_cavity",
     title: "2-D Driven Cavity Flow",
+    family: "driven_cavity",
     dimension: "2D",
     tag: "Driven-cavity family",
     metric: "Centerline velocity and vortex structure",
@@ -81,6 +84,7 @@ u(y)=U_{\\max}\\left(1-\\left(\\frac{2y}{H}\\right)^2\\right)
   {
     slug: "3d_taylor_green",
     title: "3-D Taylor-Green Vortex",
+    family: "taylor_green",
     dimension: "3D",
     tag: "Taylor-Green family",
     metric: "Energy decay and volumetric field consistency",
@@ -107,6 +111,7 @@ E_k(t)=\\frac{1}{2}\\int_{\\Omega}\\lVert\\mathbf{u}\\rVert^2\\,d\\Omega
   {
     slug: "3d_poiseuille",
     title: "3-D Poiseuille Flow",
+    family: "poiseuille",
     dimension: "3D",
     tag: "Poiseuille family",
     metric: "Axial profile recovery",
@@ -126,6 +131,7 @@ u(r)=U_{\\max}\\left(1-\\left(\\frac{r}{R}\\right)^2\\right)
   {
     slug: "3d_driven_cavity",
     title: "3-D Driven Cavity Flow",
+    family: "driven_cavity",
     dimension: "3D",
     tag: "Driven-cavity family",
     metric: "Center-plane profiles and 3D vortex structure",
@@ -151,12 +157,25 @@ u(r)=U_{\\max}\\left(1-\\left(\\frac{r}{R}\\right)^2\\right)
   }
 ];
 
-const caseGroups = [
-  { dimension: "2D", containerId: "case-grid-2d" },
-  { dimension: "3D", containerId: "case-grid-3d" }
+const caseFamilies = [
+  {
+    id: "taylor_green",
+    title: "Taylor-Green Vortex",
+    description: "2D and 3D periodic vortex-decay benchmarks for transient viscous dissipation."
+  },
+  {
+    id: "poiseuille",
+    title: "Poiseuille Flow",
+    description: "2D and 3D pressure-driven internal-flow benchmarks for profile recovery."
+  },
+  {
+    id: "driven_cavity",
+    title: "Driven Cavity Flow",
+    description: "2D and 3D wall-driven recirculation benchmarks for enclosed-domain validation."
+  }
 ];
 
-const MEDIA_VERSION = "20260316-13";
+const MEDIA_VERSION = "20260316-14";
 
 function createPlaceholder(caseData) {
   const shell = document.createElement("div");
@@ -257,16 +276,38 @@ function createCaseCard(caseData) {
 }
 
 function renderCases() {
-  for (const group of caseGroups) {
-    const grid = document.getElementById(group.containerId);
-    if (!grid) {
-      continue;
+  const stack = document.getElementById("case-family-stack");
+  if (!stack) {
+    return;
+  }
+
+  const dimensionOrder = { "2D": 0, "3D": 1 };
+
+  for (const family of caseFamilies) {
+    const familyCases = cases
+      .filter((caseData) => caseData.family === family.id)
+      .sort((left, right) => dimensionOrder[left.dimension] - dimensionOrder[right.dimension]);
+
+    const familyGroup = document.createElement("section");
+    familyGroup.className = "case-family-group reveal";
+
+    const familyHead = document.createElement("div");
+    familyHead.className = "case-family-head";
+    familyHead.innerHTML = `
+      <p class="case-family-kicker">Benchmark family</p>
+      <h3>${family.title}</h3>
+      <p>${family.description}</p>
+    `;
+
+    const familyGrid = document.createElement("div");
+    familyGrid.className = "family-case-grid";
+
+    for (const caseData of familyCases) {
+      familyGrid.appendChild(createCaseCard(caseData));
     }
 
-    const groupedCases = cases.filter((caseData) => caseData.dimension === group.dimension);
-    for (const caseData of groupedCases) {
-      grid.appendChild(createCaseCard(caseData));
-    }
+    familyGroup.append(familyHead, familyGrid);
+    stack.appendChild(familyGroup);
   }
 }
 
