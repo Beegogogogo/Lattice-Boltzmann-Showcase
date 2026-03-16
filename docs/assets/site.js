@@ -218,15 +218,6 @@ async function attachMedia(container, caseData) {
         shell.appendChild(image);
       }
 
-      const overlay = document.createElement("div");
-      overlay.className = "case-media-overlay";
-      overlay.innerHTML = `
-        <span class="media-badge">media loaded</span>
-        <p class="media-title">${caseData.title}</p>
-        <p class="media-note">${caseData.note}</p>
-      `;
-      shell.appendChild(overlay);
-
       container.replaceChildren(shell);
       return;
     } catch (_err) {
