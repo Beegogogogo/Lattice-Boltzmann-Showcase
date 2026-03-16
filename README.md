@@ -1,6 +1,6 @@
 # Lattice Boltzmann Showcase
 
-Public GitHub Pages site for presenting validation cases, governing equations, and media exported from a lattice Boltzmann workflow.
+This site for presenting validation cases, governing equations, and media exported from a lattice Boltzmann workflow.
 
 ## Purpose
 
