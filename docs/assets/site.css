@@ -256,6 +256,44 @@ p {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.future-card--featured {
+  grid-column: 1 / -1;
+}
+
+.future-subgrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.future-subcard {
+  padding: 16px;
+  border: 1px solid rgba(16, 39, 42, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.future-subkicker {
+  margin: 0 0 8px;
+  color: var(--rust);
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+}
+
+.future-subcard h4 {
+  margin: 0 0 8px;
+  font-family: var(--serif);
+  font-size: 1.08rem;
+  line-height: 1.15;
+}
+
+.future-subcard p:last-child {
+  margin-bottom: 0;
+}
+
 .pillar-index {
   display: inline-block;
   margin-bottom: 12px;
@@ -528,6 +566,10 @@ code {
   }
 
   .hero-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .future-subgrid {
     grid-template-columns: 1fr;
   }
 
