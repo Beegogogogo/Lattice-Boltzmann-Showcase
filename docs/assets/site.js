@@ -32,12 +32,6 @@ u_y(x,y,t)=-u_0 \\cos(sx)\\sin(sy)\\exp\\left(-2s^2\\nu t\\right),
 \\qquad
 s=\\frac{2\\pi}{L}
 \\]
-\\[
-L_2(t)=\\sqrt{
-\\frac{\\sum_{\\Omega}\\left\\|\\mathbf{u}_{num}-\\mathbf{u}_{exact}\\right\\|^2}
-{\\sum_{\\Omega}\\left\\|\\mathbf{u}_{exact}\\right\\|^2}
-}
-\\]
 `,
     media: "docs/assets/media/2d_taylor_green.mp4",
     details: []
