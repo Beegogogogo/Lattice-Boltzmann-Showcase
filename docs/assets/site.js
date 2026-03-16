@@ -168,16 +168,6 @@ function createDetailRow(label, value, isCode = false) {
 function createPlaceholder(caseData) {
   const shell = document.createElement("div");
   shell.className = "case-media-inner";
-
-  const overlay = document.createElement("div");
-  overlay.className = "case-media-overlay";
-  overlay.innerHTML = `
-    <span class="media-badge">media placeholder</span>
-    <p class="media-title">${caseData.title}</p>
-    <p class="media-note">Add <code>${caseData.media}</code>, or use the same slug with <code>.webm</code>, <code>.gif</code>, or <code>.png</code>.</p>
-  `;
-
-  shell.appendChild(overlay);
   return shell;
 }
 

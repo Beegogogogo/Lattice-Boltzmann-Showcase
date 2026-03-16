@@ -364,30 +364,6 @@ p {
   inset: 0;
 }
 
-.case-media-overlay {
-  position: relative;
-  z-index: 1;
-  max-width: 18rem;
-}
-
-.media-badge {
-  display: inline-block;
-  margin-bottom: 8px;
-  color: rgba(249, 246, 238, 0.76);
-}
-
-.media-title {
-  margin: 0 0 6px;
-  color: #f9f6ee;
-  font-family: var(--serif);
-  font-size: 1.5rem;
-}
-
-.media-note {
-  color: rgba(249, 246, 238, 0.78);
-  font-size: 0.92rem;
-}
-
 .case-copy {
   padding: 22px;
 }
