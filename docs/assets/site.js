@@ -156,28 +156,6 @@ const caseGroups = [
   { dimension: "3D", containerId: "case-grid-3d" }
 ];
 
-function createDetailRow(label, value, isCode = false) {
-  const row = document.createElement("div");
-  row.className = "detail-row";
-
-  const labelNode = document.createElement("div");
-  labelNode.className = "detail-label";
-  labelNode.textContent = label;
-
-  const valueNode = document.createElement("div");
-  valueNode.className = "detail-value";
-  if (isCode) {
-    const code = document.createElement("code");
-    code.textContent = value;
-    valueNode.appendChild(code);
-  } else {
-    valueNode.textContent = value;
-  }
-
-  row.append(labelNode, valueNode);
-  return row;
-}
-
 function createPlaceholder(caseData) {
   const shell = document.createElement("div");
   shell.className = "case-media-inner";
@@ -269,26 +247,7 @@ function createCaseCard(caseData) {
     <div class="equation-block case-equation-block">${caseData.equation}</div>
   `;
 
-  const details = document.createElement("div");
-  details.className = "case-details";
-  const detailRows = caseData.details !== undefined
-    ? caseData.details
-    : [
-        { label: "Physics", value: caseData.physics },
-        { label: "Reference", value: caseData.reference },
-        { label: "Workflow", value: caseData.workflow },
-        { label: "Media slot", value: caseData.media, isCode: true },
-        { label: "Presentation note", value: caseData.note }
-      ];
-
-  for (const row of detailRows) {
-    details.appendChild(createDetailRow(row.label, row.value, row.isCode === true));
-  }
-
   copy.append(head, descriptionLabel, description, equationCard);
-  if (detailRows.length > 0) {
-    copy.append(details);
-  }
   card.append(media, copy);
   attachMedia(media, caseData);
 
