@@ -156,6 +156,8 @@ const caseGroups = [
   { dimension: "3D", containerId: "case-grid-3d" }
 ];
 
+const MEDIA_VERSION = "20260316-13";
+
 function createPlaceholder(caseData) {
   const shell = document.createElement("div");
   shell.className = "case-media-inner";
@@ -164,10 +166,10 @@ function createPlaceholder(caseData) {
 
 async function attachMedia(container, caseData) {
   const candidates = [
-    { path: `assets/media/${caseData.slug}.mp4`, kind: "video", type: "video/mp4" },
-    { path: `assets/media/${caseData.slug}.webm`, kind: "video", type: "video/webm" },
-    { path: `assets/media/${caseData.slug}.gif`, kind: "image" },
-    { path: `assets/media/${caseData.slug}.png`, kind: "image" }
+    { path: `assets/media/${caseData.slug}.mp4?v=${MEDIA_VERSION}`, kind: "video", type: "video/mp4" },
+    { path: `assets/media/${caseData.slug}.webm?v=${MEDIA_VERSION}`, kind: "video", type: "video/webm" },
+    { path: `assets/media/${caseData.slug}.gif?v=${MEDIA_VERSION}`, kind: "image" },
+    { path: `assets/media/${caseData.slug}.png?v=${MEDIA_VERSION}`, kind: "image" }
   ];
 
   for (const asset of candidates) {
