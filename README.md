@@ -1,5 +1,10 @@
 # Lattice Boltzmann Showcase
 
+## Live Site
+
+**Open the public project page:**  
+[https://beegogogogo.github.io/Lattice-Boltzmann-Showcase/](https://beegogogogo.github.io/Lattice-Boltzmann-Showcase/)
+
 This site for presenting validation cases, governing equations, and media exported from a lattice Boltzmann workflow.
 
 ## Purpose
