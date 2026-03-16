@@ -233,7 +233,6 @@ function createCaseCard(caseData) {
   head.className = "case-head";
   head.innerHTML = `
     <div>
-      <p class="case-tag">${caseData.tag}</p>
       <h3>${caseData.title}</h3>
     </div>
   `;
