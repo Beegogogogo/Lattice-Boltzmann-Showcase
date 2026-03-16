@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/site.css?v=20260316-27">
+  <link rel="stylesheet" href="assets/site.css?v=20260316-28">
 </head>
 <body>
   <div class="page-shell">
@@ -25,9 +25,13 @@
         <div class="hero-identity">
           <span class="hero-identity-name">Dr. Feng Huang</span>
           <a class="hero-identity-link" href="mailto:feng.huang@ovgu.de">feng.huang@ovgu.de</a>
+          <div class="hero-identity-meta">
+            <span>Lehrstuhl für Strömungsmechanik und Strömungstechnik (LSS)</span>
+            <span>Otto-von-Guericke-Universität Magdeburg</span>
+          </div>
         </div>
         <div class="hero-actions">
-          <a class="button primary" href="#overview">LBM Solver</a>
+          <a class="button primary" href="#cases">LBM Solver</a>
           <a class="button secondary" href="#cases">Browse Benchmarks</a>
           <a class="button secondary" href="#future">Application</a>
           <a class="button secondary" href="https://github.com/Beegogogogo/Lattice-Boltzmann-Showcase" target="_blank" rel="noreferrer">Open Showcase Repo</a>
@@ -57,35 +61,6 @@
     </header>
 
     <main>
-      <section id="overview" class="section split-layout">
-        <div class="section-copy reveal">
-          <p class="section-kicker">Project Framing</p>
-          <h2>A solver page rather than a loose media wall</h2>
-          <p>
-            The main message of this project is the solver itself. The current homepage therefore starts with
-            canonical benchmarks that are widely recognizable, quantitatively defensible, and easy to map to solver behavior.
-            Once that foundation is clear, more complex videos such as aneurysm flow fields or particle interactions can be added as an application layer.
-          </p>
-        </div>
-        <div class="scope-grid reveal">
-          <article class="scope-card">
-            <span class="pillar-index">01</span>
-            <h3>Verification core</h3>
-            <p>Benchmark families are arranged to show how the solver performs in decaying vortical flow, fully developed channel flow, and wall-driven recirculation.</p>
-          </article>
-          <article class="scope-card">
-            <span class="pillar-index">02</span>
-            <h3>Dimensional pairing</h3>
-            <p>Each family is split into 2D and 3D panels so the page shows a consistent validation ladder instead of unrelated examples.</p>
-          </article>
-          <article class="scope-card">
-            <span class="pillar-index">03</span>
-            <h3>Future expansion</h3>
-            <p>The layout leaves room to append applied simulations later, including aneurysm hemodynamics and particle-collision videos.</p>
-          </article>
-        </div>
-      </section>
-
       <section id="cases" class="section">
         <div class="section-heading reveal">
           <p class="section-kicker">Validation Gallery</p>
