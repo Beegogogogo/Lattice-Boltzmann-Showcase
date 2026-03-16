@@ -363,15 +363,6 @@ p {
   inset: 0;
 }
 
-.case-media img {
-  width: calc(100% - 28px);
-  height: calc(100% - 28px);
-  inset: 14px;
-  object-fit: contain;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.08);
-}
-
 .case-media-overlay {
   position: relative;
   z-index: 1;
