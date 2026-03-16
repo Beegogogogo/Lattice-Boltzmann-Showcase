@@ -86,6 +86,7 @@ u(y)=U_{\\max}\\left(1-\\left(\\frac{2y}{H}\\right)^2\\right)
     title: "3-D Taylor-Green Vortex",
     family: "taylor_green",
     dimension: "3D",
+    mediaFit: "contain",
     tag: "Taylor-Green family",
     metric: "Energy decay and volumetric field consistency",
     description: "Three-dimensional periodic vortex benchmark for assessing how the solver captures volumetric structure, dissipation, and symmetry in a canonical transient flow.",
@@ -175,7 +176,7 @@ const caseFamilies = [
   }
 ];
 
-const MEDIA_VERSION = "20260316-17";
+const MEDIA_VERSION = "20260316-18";
 
 function createPlaceholder(caseData) {
   const shell = document.createElement("div");
@@ -236,6 +237,9 @@ function createCaseCard(caseData) {
 
   const media = document.createElement("div");
   media.className = "case-media";
+  if (caseData.mediaFit === "contain") {
+    media.classList.add("case-media--contain");
+  }
   media.appendChild(createPlaceholder(caseData));
 
   const copy = document.createElement("div");

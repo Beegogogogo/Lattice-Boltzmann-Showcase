@@ -372,6 +372,11 @@ p {
   inset: 0;
 }
 
+.case-media--contain video,
+.case-media--contain img {
+  object-fit: contain;
+}
+
 .case-copy {
   padding: 22px;
 }
