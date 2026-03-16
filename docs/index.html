@@ -135,6 +135,89 @@
         </div>
       </section>
 
+      <section id="featured-case" class="section">
+        <div class="section-heading reveal">
+          <p class="section-kicker">Featured Benchmark</p>
+          <h2>2-D Taylor-Green Vortex</h2>
+          <p>
+            This is the first benchmark in the showcase because it is compact, classical, and quantitatively sharp:
+            a periodic vortex field with a closed-form viscous decay law. It is an effective first check for whether
+            the solver reproduces transient momentum transport with the expected spatial pattern and decay rate.
+          </p>
+        </div>
+        <div class="featured-grid">
+          <article class="featured-card reveal">
+            <h3>Case description</h3>
+            <p>
+              The 2-D Taylor-Green testcase starts from a divergence-free velocity field in a periodic box.
+              As time advances, the vortical structure decays due to viscosity while preserving the analytic
+              spatial form. This makes the benchmark useful for validating both the temporal dissipation rate
+              and the phase accuracy of the computed velocity field.
+            </p>
+            <p>
+              For a lattice Boltzmann solver, this case is a clean verification target because there are no
+              complex boundaries, forcing ambiguities, or geometry effects hiding the core fluid dynamics.
+              The main question is simple: does the numerical solution decay exactly the way the Navier-Stokes
+              reference predicts?
+            </p>
+          </article>
+          <article class="featured-card reveal">
+            <h3>What this testcase verifies</h3>
+            <div class="benchmark-points">
+              <div class="benchmark-point">
+                <span class="point-index">01</span>
+                <p>Recovery of the vortex topology and symmetry over time.</p>
+              </div>
+              <div class="benchmark-point">
+                <span class="point-index">02</span>
+                <p>Correct viscous damping rate for velocity magnitude and kinetic energy.</p>
+              </div>
+              <div class="benchmark-point">
+                <span class="point-index">03</span>
+                <p>Agreement between numerical and analytical fields through an L2-type error metric.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="featured-equations reveal">
+          <article class="featured-equation-card">
+            <h3>Control equations</h3>
+            <div class="equation-block">
+              \[
+              \frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \mathbf{u}) = 0
+              \]
+              \[
+              \frac{\partial (\rho \mathbf{u})}{\partial t}
+              + \nabla \cdot (\rho \mathbf{u} \otimes \mathbf{u})
+              = -\nabla p + \mu \nabla^2 \mathbf{u}
+              \]
+            </div>
+            <p>
+              On this page the testcase is framed with the weakly compressible flow equations used throughout the showcase,
+              while the benchmark target itself is the classical viscous Taylor-Green decay solution.
+            </p>
+          </article>
+          <article class="featured-equation-card">
+            <h3>Analytical reference solution</h3>
+            <div class="equation-block">
+              \[
+              u(x,y,t) = U_0 \cos(kx)\sin(ky)\exp(-2\nu k^2 t)
+              \]
+              \[
+              v(x,y,t) = -U_0 \sin(kx)\cos(ky)\exp(-2\nu k^2 t)
+              \]
+              \[
+              p(x,y,t) = p_0 - \frac{\rho U_0^2}{4}\left[\cos(2kx)+\cos(2ky)\right]\exp(-4\nu k^2 t)
+              \]
+            </div>
+            <p>
+              These closed-form fields give a direct target for comparison, so the animation can be paired with
+              an explicit statement of the expected decay law instead of only a qualitative visual impression.
+            </p>
+          </article>
+        </div>
+      </section>
+
       <section id="cases" class="section">
         <div class="section-heading reveal">
           <p class="section-kicker">Validation Gallery</p>

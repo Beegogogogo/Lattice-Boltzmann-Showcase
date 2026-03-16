@@ -3,13 +3,13 @@ const cases = [
     slug: "2d_taylor_green",
     title: "2-D Taylor-Green Vortex",
     tag: "Analytic decay",
-    summary: "A decaying-vortex benchmark used to compare simulated velocity fields against the exact decay law in time.",
-    metric: "L2 error benchmark",
-    physics: "Weakly compressible flow, viscous decay",
-    equation: "\\(\\mathbf{u}(x,y,t)=\\mathbf{u}_0(x,y)\\exp(-2k^2\\nu t)\\)",
-    workflow: "Run the local Taylor-Green validation workflow and export time snapshots.",
+    summary: "A periodic decaying-vortex benchmark that checks whether the simulated velocity field follows the exact viscous Taylor-Green decay in both shape and amplitude.",
+    metric: "Velocity-field L2 error and decay-rate agreement",
+    physics: "Weakly compressible Navier-Stokes verification in a periodic box",
+    equation: "\\(u=U_0\\cos(kx)\\sin(ky)e^{-2\\nu k^2 t},\\; v=-U_0\\sin(kx)\\cos(ky)e^{-2\\nu k^2 t}\\)",
+    workflow: "Run the Taylor-Green testcase, export velocity snapshots, and compare them against the analytical reference solution over time.",
     media: "docs/assets/media/2d_taylor_green.mp4",
-    note: "Strong opening case because the qualitative vortex decay and the quantitative error story fit together cleanly."
+    note: "Strong opening case because the vortex movie, the decay law, and the regression metric all tell the same verification story."
   },
   {
     slug: "2d_poiseuille",

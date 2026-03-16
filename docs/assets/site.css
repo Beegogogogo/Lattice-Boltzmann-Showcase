@@ -241,14 +241,29 @@ p {
   gap: 16px;
 }
 
+.featured-grid,
+.featured-equations,
+.benchmark-points {
+  display: grid;
+  gap: 16px;
+}
+
 .pillars {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.featured-grid,
+.featured-equations {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 18px;
 }
 
 .pillar,
 .equation-card,
 .workflow-card,
-.structure-card {
+.structure-card,
+.featured-card,
+.featured-equation-card {
   padding: 20px;
 }
 
@@ -260,9 +275,38 @@ p {
   font-size: 0.8rem;
 }
 
+.benchmark-point {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding-top: 10px;
+  border-top: 1px solid rgba(16, 39, 42, 0.08);
+}
+
+.point-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(15, 139, 141, 0.12);
+  color: var(--teal);
+  font-family: var(--mono);
+  font-size: 0.76rem;
+}
+
 .equation-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   margin-top: 20px;
+}
+
+.featured-card,
+.featured-equation-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.72);
 }
 
 .equation-block {
@@ -458,7 +502,9 @@ code {
   .split-layout,
   .case-card,
   .equation-grid,
-  .structure-grid {
+  .structure-grid,
+  .featured-grid,
+  .featured-equations {
     grid-template-columns: 1fr;
   }
 
