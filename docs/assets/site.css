@@ -331,11 +331,12 @@ p {
   display: grid;
   grid-template-columns: minmax(240px, 0.72fr) minmax(0, 1.28fr);
   overflow: hidden;
+  align-items: start;
 }
 
 .case-media {
   position: relative;
-  min-height: 240px;
+  aspect-ratio: 1 / 1;
   background:
     radial-gradient(circle at 22% 18%, rgba(211, 169, 77, 0.28), transparent 28%),
     linear-gradient(155deg, #14363b, #28565d 56%, #0f2326 100%);
@@ -559,9 +560,5 @@ code {
 
   .case-head {
     display: grid;
-  }
-
-  .case-media {
-    min-height: 220px;
   }
 }
