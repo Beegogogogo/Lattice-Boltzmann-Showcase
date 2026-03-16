@@ -178,7 +178,7 @@ const caseFamilies = [
   }
 ];
 
-const MEDIA_VERSION = "20260316-21";
+const MEDIA_VERSION = "20260316-22";
 
 function createPlaceholder(caseData) {
   const shell = document.createElement("div");
@@ -234,15 +234,16 @@ async function attachMedia(container, caseData) {
 }
 
 function createCaseCard(caseData) {
+  const useWrapLayout = caseData.layout !== "grid";
   const card = document.createElement("article");
-  card.className = `case-card reveal${caseData.layout === "wrap" ? " case-card--wrap" : ""}`;
+  card.className = `case-card reveal${useWrapLayout ? " case-card--wrap" : ""}`;
 
   const media = document.createElement("div");
   media.className = "case-media";
   if (caseData.mediaFit === "contain") {
     media.classList.add("case-media--contain");
   }
-  if (caseData.layout === "wrap") {
+  if (useWrapLayout) {
     media.classList.add("case-media--wrap");
   }
   if (caseData.mediaAspectRatio) {
@@ -280,7 +281,7 @@ function createCaseCard(caseData) {
     <div class="equation-block case-equation-block">${caseData.equation}</div>
   `;
 
-  if (caseData.layout === "wrap") {
+  if (useWrapLayout) {
     copy.classList.add("case-copy--wrap");
     copy.append(media, head, descriptionLabel, description, equationCard);
     card.append(copy);
