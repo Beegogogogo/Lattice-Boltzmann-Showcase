@@ -2,99 +2,86 @@ const cases = [
   {
     slug: "2d_taylor_green",
     title: "2-D Taylor-Green Vortex",
-    tag: "Analytic decay",
-    summary: "A periodic decaying-vortex benchmark that checks whether the simulated velocity field follows the exact viscous Taylor-Green decay in both shape and amplitude.",
-    metric: "Velocity-field L2 error and decay-rate agreement",
-    physics: "Weakly compressible Navier-Stokes verification in a periodic box",
-    equation: "\\(u=U_0\\cos(kx)\\sin(ky)e^{-2\\nu k^2 t},\\; v=-U_0\\sin(kx)\\cos(ky)e^{-2\\nu k^2 t}\\)",
-    workflow: "Run the Taylor-Green testcase, export velocity snapshots, and compare them against the analytical reference solution over time.",
+    dimension: "2D",
+    tag: "Taylor-Green family",
+    summary: "Periodic decaying-vortex benchmark for checking transient viscous dissipation, symmetry preservation, and field-level agreement with the analytical decay trend.",
+    metric: "Decay-rate and L2 field agreement",
+    physics: "Periodic incompressible-like vortex decay",
+    reference: "Analytical vortex decay with known temporal damping in a periodic box.",
+    workflow: "Export velocity or vorticity snapshots and compare the decay against the analytical reference over time.",
     media: "docs/assets/media/2d_taylor_green.mp4",
-    note: "Strong opening case because the vortex movie, the decay law, and the regression metric all tell the same verification story."
+    note: "A strong first validation panel because the benchmark is compact, classical, and visually clean."
   },
   {
     slug: "2d_poiseuille",
     title: "2-D Poiseuille Flow",
-    tag: "Profile recovery",
-    summary: "Pressure-driven channel flow used to compare the recovered velocity profile with an analytic or semi-analytic reference.",
-    metric: "Profile agreement",
-    physics: "Channel flow, possibly power-law rheology",
-    equation: "\\(u_y(x) \\propto (H/2)^{(n+1)/n} - |H/2-x|^{(n+1)/n}\\)",
-    workflow: "Export centerline or field evolution frames and annotate the recovered profile.",
+    dimension: "2D",
+    tag: "Poiseuille family",
+    summary: "Pressure-driven planar channel flow used to verify the recovered steady velocity profile and wall behavior against the known benchmark solution.",
+    metric: "Centerline/profile agreement",
+    physics: "Planar internal flow with no-slip walls",
+    reference: "Steady pressure-driven channel profile with maximum velocity at the centerline.",
+    workflow: "Render channel velocity contours and a profile comparison plot for the same case.",
     media: "docs/assets/media/2d_poiseuille.mp4",
-    note: "Works well with a split view: simulated field on one side and analytic profile on the other."
+    note: "Works best when the field view is paired with a line profile extracted across the channel."
   },
   {
-    slug: "gaussian_hill",
-    title: "Gaussian Hill Diffusion",
-    tag: "Scalar transport",
-    summary: "A Gaussian scalar field is transported and diffused, then compared with the analytical advection-diffusion solution.",
-    metric: "Transport error trend",
-    physics: "Advection-diffusion verification",
-    equation: "\\(\\partial_t \\phi + \\mathbf{u}\\cdot\\nabla\\phi = D\\nabla^2\\phi\\)",
-    workflow: "Export scalar snapshots with a fixed color map and compare the spread rate over time.",
-    media: "docs/assets/media/gaussian_hill.mp4",
-    note: "A clean case for showing how numerical diffusion compares with the analytical spreading rate."
+    slug: "2d_driven_cavity",
+    title: "2-D Driven Cavity Flow",
+    dimension: "2D",
+    tag: "Driven-cavity family",
+    summary: "Wall-driven recirculating flow used to validate no-slip boundaries, vortex structure formation, and centerline velocity profiles in a closed box.",
+    metric: "Centerline velocity and vortex structure",
+    physics: "Recirculating lid-driven cavity",
+    reference: "No-slip walls with a moving lid and benchmark centerline velocity profiles.",
+    workflow: "Export streamlines or vorticity fields together with horizontal and vertical centerline comparisons.",
+    media: "docs/assets/media/2d_driven_cavity.mp4",
+    note: "This case is effective for showing how the solver handles confined shear-driven recirculation."
   },
   {
-    slug: "curved_boundary",
-    title: "Curved Boundary Reconstruction",
-    tag: "Geometry accuracy",
-    summary: "Boundary-node distances and local normals are checked against known geometry to quantify reconstruction fidelity.",
-    metric: "Distance and angle error",
-    physics: "Curved boundary treatment",
-    equation: "\\(d = \\min_{\\Gamma} \\|\\mathbf{x}-\\mathbf{x}_\\Gamma\\|\\)",
-    workflow: "Render geometry overlays or normal vectors at several refinement levels.",
-    media: "docs/assets/media/curved_boundary.png",
-    note: "Best presented with annotations that show the reconstructed interface, normals, and local error."
+    slug: "3d_taylor_green",
+    title: "3-D Taylor-Green Vortex",
+    dimension: "3D",
+    tag: "Taylor-Green family",
+    summary: "Three-dimensional periodic vortex decay benchmark for assessing how the solver captures volumetric dissipation and evolving vortical structures.",
+    metric: "Energy decay and volumetric field consistency",
+    physics: "3D periodic vortex decay",
+    reference: "Periodic vortex field with a known dissipation trend used to monitor energy decay and symmetry.",
+    workflow: "Render iso-surfaces or planar slices and compare kinetic-energy decay against the reference trend.",
+    media: "docs/assets/media/3d_taylor_green.mp4",
+    note: "A good bridge from planar verification to truly volumetric flow dynamics."
   },
   {
-    slug: "mass_conservation",
-    title: "Mass Conservation in Lid-Driven Cavity",
-    tag: "Conservation law",
-    summary: "Tracks total mass through time to reveal whether the solver stays stable under moving-wall forcing.",
-    metric: "Relative mass drift",
-    physics: "Continuity monitoring",
-    equation: "\\(M(t)=\\int_\\Omega \\rho(\\mathbf{x},t)\\,d\\Omega\\)",
-    workflow: "Plot total mass over time and optionally pair it with the cavity field evolution.",
-    media: "docs/assets/media/mass_conservation.mp4",
-    note: "This is more about credibility than visual drama, so a combined plot-plus-flow layout works best."
+    slug: "3d_poiseuille",
+    title: "3-D Poiseuille Flow",
+    dimension: "3D",
+    tag: "Poiseuille family",
+    summary: "Pressure-driven pipe or duct flow used to verify the volumetric axial velocity profile and wall-normal behavior in three dimensions.",
+    metric: "Axial profile recovery",
+    physics: "3D internal pressure-driven flow",
+    reference: "Steady laminar pipe or duct profile with a smooth maximum at the centerline.",
+    workflow: "Combine a volumetric slice view with a radial or transverse profile comparison.",
+    media: "docs/assets/media/3d_poiseuille.mp4",
+    note: "The 3D counterpart shows whether the internal-flow implementation scales cleanly beyond planar geometry."
   },
   {
-    slug: "particle_sed2",
-    title: "Particle Settling",
-    tag: "Fluid-particle coupling",
-    summary: "Settling-particle motion is compared against validation data through velocity history and transient response.",
-    metric: "Velocity-history agreement",
-    physics: "Fluid-particle interaction",
-    equation: "\\(m_p\\, d\\mathbf{u}_p/dt = \\mathbf{F}_d + \\mathbf{F}_g + \\cdots\\)",
-    workflow: "Export both the particle trajectory view and the time-history plot for the same clip.",
-    media: "docs/assets/media/particle_sed2.mp4",
-    note: "Usually one of the most persuasive cases for non-specialist audiences because the motion is immediate."
-  },
-  {
-    slug: "bulk_viscosity",
-    title: "Bulk Viscosity via Acoustic Damping",
-    tag: "Wave attenuation",
-    summary: "Acoustic energy decay is used to infer damping behavior and estimate effective bulk-viscosity trends.",
-    metric: "Energy decay fit",
-    physics: "Acoustic damping",
-    equation: "\\(E(t) \\sim E_0\\exp(-2\\eta k^2 t)\\)",
-    workflow: "Pair the wavefield animation with a semilog energy-decay plot.",
-    media: "docs/assets/media/bulk_viscosity.mp4",
-    note: "A short wave movie plus a fitted slope panel communicates the result much better than raw fields alone."
-  },
-  {
-    slug: "boundary_rotation",
-    title: "Rotated Boundary Conditions",
-    tag: "Orientation robustness",
-    summary: "The same physical setup is rotated to check whether transformed solutions remain consistent across orientations.",
-    metric: "Rotation-consistency check",
-    physics: "Boundary-condition invariance",
-    equation: "\\(\\mathbf{x}' = \\mathbf{R}(\\theta)\\,\\mathbf{x}\\)",
-    workflow: "Show the baseline and rotated cases side by side with identical visual scaling.",
-    media: "docs/assets/media/boundary_rotation.mp4",
-    note: "A before-and-after comparison makes the invariance claim easy to understand visually."
+    slug: "3d_driven_cavity",
+    title: "3-D Driven Cavity Flow",
+    dimension: "3D",
+    tag: "Driven-cavity family",
+    summary: "Three-dimensional lid-driven cavity benchmark for testing recirculating structures, wall treatment, and center-plane velocity behavior in a confined volume.",
+    metric: "Center-plane profiles and 3D vortex structure",
+    physics: "3D wall-driven recirculating cavity",
+    reference: "Closed cavity with moving lid and benchmark center-plane or centerline velocity comparisons.",
+    workflow: "Export center-plane slices or vortex-core visuals together with profile comparisons from the cavity interior.",
+    media: "docs/assets/media/3d_driven_cavity.mp4",
+    note: "This case is well suited for showing how the solver handles fully three-dimensional wall-bounded vortical flow."
   }
+];
+
+const caseGroups = [
+  { dimension: "2D", containerId: "case-grid-2d" },
+  { dimension: "3D", containerId: "case-grid-3d" }
 ];
 
 function createDetailRow(label, value, isCode = false) {
@@ -112,7 +99,7 @@ function createDetailRow(label, value, isCode = false) {
     code.textContent = value;
     valueNode.appendChild(code);
   } else {
-    valueNode.innerHTML = value;
+    valueNode.textContent = value;
   }
 
   row.append(labelNode, valueNode);
@@ -191,49 +178,56 @@ async function attachMedia(container, caseData) {
   container.replaceChildren(createPlaceholder(caseData));
 }
 
+function createCaseCard(caseData) {
+  const card = document.createElement("article");
+  card.className = "case-card reveal";
+
+  const media = document.createElement("div");
+  media.className = "case-media";
+  media.appendChild(createPlaceholder(caseData));
+
+  const copy = document.createElement("div");
+  copy.className = "case-copy";
+
+  const head = document.createElement("div");
+  head.className = "case-head";
+  head.innerHTML = `
+    <div>
+      <p class="case-tag">${caseData.tag}</p>
+      <h3>${caseData.title}</h3>
+    </div>
+    <span class="case-metric">${caseData.metric}</span>
+  `;
+
+  const summary = document.createElement("p");
+  summary.textContent = caseData.summary;
+
+  const details = document.createElement("div");
+  details.className = "case-details";
+  details.appendChild(createDetailRow("Physics", caseData.physics));
+  details.appendChild(createDetailRow("Reference", caseData.reference));
+  details.appendChild(createDetailRow("Workflow", caseData.workflow));
+  details.appendChild(createDetailRow("Media slot", caseData.media, true));
+  details.appendChild(createDetailRow("Presentation note", caseData.note));
+
+  copy.append(head, summary, details);
+  card.append(media, copy);
+  attachMedia(media, caseData);
+
+  return card;
+}
+
 function renderCases() {
-  const grid = document.getElementById("case-grid");
-  if (!grid) {
-    return;
-  }
+  for (const group of caseGroups) {
+    const grid = document.getElementById(group.containerId);
+    if (!grid) {
+      continue;
+    }
 
-  for (const caseData of cases) {
-    const card = document.createElement("article");
-    card.className = "case-card reveal";
-
-    const media = document.createElement("div");
-    media.className = "case-media";
-    media.appendChild(createPlaceholder(caseData));
-
-    const copy = document.createElement("div");
-    copy.className = "case-copy";
-
-    const head = document.createElement("div");
-    head.className = "case-head";
-    head.innerHTML = `
-      <div>
-        <p class="case-tag">${caseData.tag}</p>
-        <h3>${caseData.title}</h3>
-      </div>
-      <span class="case-metric">${caseData.metric}</span>
-    `;
-
-    const summary = document.createElement("p");
-    summary.textContent = caseData.summary;
-
-    const details = document.createElement("div");
-    details.className = "case-details";
-    details.appendChild(createDetailRow("Physics", caseData.physics));
-    details.appendChild(createDetailRow("Equation", `<span class="inline-equation">${caseData.equation}</span>`));
-    details.appendChild(createDetailRow("Workflow", caseData.workflow));
-    details.appendChild(createDetailRow("Media slot", caseData.media, true));
-    details.appendChild(createDetailRow("Presentation note", caseData.note));
-
-    copy.append(head, summary, details);
-    card.append(media, copy);
-    grid.appendChild(card);
-
-    attachMedia(media, caseData);
+    const groupedCases = cases.filter((caseData) => caseData.dimension === group.dimension);
+    for (const caseData of groupedCases) {
+      grid.appendChild(createCaseCard(caseData));
+    }
   }
 }
 

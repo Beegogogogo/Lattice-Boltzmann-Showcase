@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lattice Boltzmann Showcase</title>
-  <meta name="description" content="A public scientific project page for lattice Boltzmann validation cases, equations, media, and benchmark narratives.">
+  <title>Lattice Boltzmann Solver Showcase</title>
+  <meta name="description" content="A public project page for a lattice Boltzmann solver, centered on canonical 2D and 3D validation benchmarks and ready for future aneurysm and particle videos.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
@@ -14,47 +14,49 @@
   <div class="page-shell">
     <header class="hero section">
       <div class="hero-copy reveal">
-        <p class="eyebrow">Lattice Boltzmann Showcase</p>
-        <h1>Scientific validation, framed for public presentation</h1>
+        <p class="eyebrow">Lattice Boltzmann Solver</p>
+        <h1>Canonical benchmarks first, application media next</h1>
         <p class="hero-text">
-          This site turns benchmark cases into a coherent research narrative:
-          canonical flows, transport verification, geometry tests, and multiphysics examples
-          presented with equations, captions, and presentation-ready media.
+          This site is organized around the core validation path of a lattice Boltzmann solver:
+          Taylor-Green decay, Poiseuille flow, and lid-driven cavity flow in both 2D and 3D.
+          The layout is intentionally modular so later sections can absorb aneurysm simulations and particle-collision videos
+          without breaking the scientific narrative.
         </p>
         <div class="hero-actions">
-          <a class="button primary" href="#cases">Browse Cases</a>
+          <a class="button primary" href="#cases">Browse Benchmarks</a>
+          <a class="button secondary" href="#equations">Core Equations</a>
           <a class="button secondary" href="#workflow">Workflow</a>
           <a class="button secondary" href="https://github.com/Beegogogogo/Lattice-Boltzmann-Showcase" target="_blank" rel="noreferrer">Open Showcase Repo</a>
         </div>
         <ul class="hero-metrics">
           <li>
-            <span class="metric-value">8</span>
-            <span class="metric-label">Benchmark stories laid out as a gallery</span>
+            <span class="metric-value">6</span>
+            <span class="metric-label">Current benchmark panels in the validation suite</span>
           </li>
           <li>
-            <span class="metric-value">Eqns</span>
-            <span class="metric-label">Physics and numerics shown beside each case</span>
+            <span class="metric-value">2D + 3D</span>
+            <span class="metric-label">Matching dimensional coverage across the main flow families</span>
           </li>
           <li>
-            <span class="metric-value">Media</span>
-            <span class="metric-label">MP4, WebM, GIF, or PNG slots per validation case</span>
+            <span class="metric-value">Next</span>
+            <span class="metric-label">Ready to expand toward aneurysm and particle media</span>
           </li>
         </ul>
       </div>
       <aside class="hero-panel reveal">
-        <p class="panel-title">Repository scope</p>
+        <p class="panel-title">Validation blocks</p>
         <div class="panel-stack">
           <article class="panel-card">
-            <h2>Public-facing narrative</h2>
-            <p>This repo is for figures, videos, equations, benchmark notes, and presentation material that can be published openly.</p>
+            <h2>Taylor-Green family</h2>
+            <p>Periodic vortex decay benchmarks for transient viscous dissipation, symmetry preservation, and field-level error checks.</p>
           </article>
           <article class="panel-card">
-            <h2>Research communication</h2>
-            <p>Each case should explain what is being validated, what quantity is compared, and why the result matters.</p>
+            <h2>Poiseuille family</h2>
+            <p>Pressure-driven internal-flow tests for profile recovery, wall treatment, and dimensional consistency from planar to volumetric channels.</p>
           </article>
           <article class="panel-card">
-            <h2>Decoupled from source privacy</h2>
-            <p>The scientific story can stay public even when the development repo, scripts, or implementation details remain private.</p>
+            <h2>Driven-cavity family</h2>
+            <p>Recirculating-wall-bounded flows for checking vortical structures, centerline profiles, and no-slip boundary behavior in 2D and 3D.</p>
           </article>
         </div>
       </aside>
@@ -63,157 +65,123 @@
     <main>
       <section id="overview" class="section split-layout">
         <div class="section-copy reveal">
-          <p class="section-kicker">Scientific Lens</p>
-          <h2>Three layers of evidence</h2>
+          <p class="section-kicker">Project Framing</p>
+          <h2>A solver page rather than a loose media wall</h2>
           <p>
-            A good validation page should make the structure explicit:
-            analytic recovery, geometric robustness, and multiphysics response.
-            That hierarchy helps reviewers and collaborators understand the scope quickly.
+            The main message of this project is the solver itself. The current homepage therefore starts with
+            canonical benchmarks that are widely recognizable, quantitatively defensible, and easy to map to solver behavior.
+            Once that foundation is clear, more complex videos such as aneurysm flow fields or particle interactions can be added as an application layer.
           </p>
         </div>
-        <div class="pillars reveal">
-          <article class="pillar">
+        <div class="scope-grid reveal">
+          <article class="scope-card">
             <span class="pillar-index">01</span>
-            <h3>Analytic recovery</h3>
-            <p>Taylor-Green decay, Poiseuille flow, and Gaussian transport reveal whether the numerical method reproduces known solutions with controlled error.</p>
+            <h3>Verification core</h3>
+            <p>Benchmark families are arranged to show how the solver performs in decaying vortical flow, fully developed channel flow, and wall-driven recirculation.</p>
           </article>
-          <article class="pillar">
+          <article class="scope-card">
             <span class="pillar-index">02</span>
-            <h3>Boundary and geometry fidelity</h3>
-            <p>Curved boundaries and rotated configurations expose whether the solver behaves consistently under nontrivial geometry and orientation.</p>
+            <h3>Dimensional pairing</h3>
+            <p>Each family is split into 2D and 3D panels so the page shows a consistent validation ladder instead of unrelated examples.</p>
           </article>
-          <article class="pillar">
+          <article class="scope-card">
             <span class="pillar-index">03</span>
-            <h3>Coupled dynamics</h3>
-            <p>Conservation, acoustic damping, and particle settling broaden the story beyond single-physics benchmark recovery.</p>
+            <h3>Future expansion</h3>
+            <p>The layout leaves room to append applied simulations later, including aneurysm hemodynamics and particle-collision videos.</p>
           </article>
         </div>
       </section>
 
       <section id="equations" class="section">
         <div class="section-heading reveal">
-          <p class="section-kicker">Governing Equations</p>
-          <h2>Core equations kept visible</h2>
-          <p>These are broad enough to frame the gallery while staying readable on a landing page.</p>
+          <p class="section-kicker">Core Equations</p>
+          <h2>Keep the lattice Boltzmann model explicit</h2>
+          <p>
+            Because this page represents a lattice Boltzmann solver, the governing equations should show both the mesoscopic evolution rule
+            and the recovered macroscopic flow equations used by the canonical benchmark suite.
+          </p>
         </div>
         <div class="equation-grid">
           <article class="equation-card reveal">
-            <h3>Weakly compressible flow</h3>
+            <h3>Lattice Boltzmann evolution</h3>
             <div class="equation-block">
               \[
-              \frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \mathbf{u}) = 0
-              \]
-              \[
-              \frac{\partial (\rho \mathbf{u})}{\partial t}
-              + \nabla \cdot (\rho \mathbf{u} \otimes \mathbf{u})
-              = -\nabla p + \nabla \cdot \left[ \mu \left( \nabla \mathbf{u} + \nabla \mathbf{u}^{T} \right) \right] + \rho \mathbf{f}
+              f_i(\mathbf{x}+\mathbf{c}_i \Delta t, t+\Delta t) - f_i(\mathbf{x}, t)
+              = -\frac{1}{\tau}\left(f_i-f_i^{eq}\right) + \Delta t\,F_i
               \]
             </div>
-            <p>Frames vortex decay, channel flow, rotated inflow tests, and mass-conservation monitoring.</p>
+            <p>The solver advances discrete distribution functions by streaming, collision, and optional forcing, which is the starting point for every showcased case.</p>
           </article>
           <article class="equation-card reveal">
-            <h3>Advection-diffusion transport</h3>
+            <h3>Macroscopic recovery</h3>
             <div class="equation-block">
               \[
-              \frac{\partial \phi}{\partial t} + \mathbf{u} \cdot \nabla \phi = D \nabla^2 \phi
-              \]
-            </div>
-            <p>Useful for Gaussian hill benchmarks and for explaining temperature or species verification movies.</p>
-          </article>
-          <article class="equation-card reveal">
-            <h3>Reference profiles and decay laws</h3>
-            <div class="equation-block">
-              \[
-              u_y(x) \propto \left[ \left(\frac{H}{2}\right)^{(n+1)/n} - \left| \frac{H}{2} - x \right|^{(n+1)/n} \right]
+              \rho = \sum_i f_i, \qquad \rho \mathbf{u} = \sum_i \mathbf{c}_i f_i
               \]
               \[
-              \mathbf{u}(x,y,t) = \mathbf{u}_0(x,y)\, \exp\!\left(-2k^2 \nu t\right)
-              \]
-            </div>
-            <p>Channel-flow profiles and Taylor-Green decay make it easy to display quantitative agreement directly beside the animation.</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="featured-case" class="section">
-        <div class="section-heading reveal">
-          <p class="section-kicker">Featured Benchmark</p>
-          <h2>2-D Taylor-Green Vortex</h2>
-          <p>
-            This is the first benchmark in the showcase because it is compact, classical, and quantitatively sharp:
-            a periodic vortex field with a closed-form viscous decay law. It is an effective first check for whether
-            the solver reproduces transient momentum transport with the expected spatial pattern and decay rate.
-          </p>
-        </div>
-        <div class="featured-grid">
-          <article class="featured-card reveal">
-            <h3>Case description</h3>
-            <p>
-              The 2-D Taylor-Green testcase starts from a divergence-free velocity field in a periodic box.
-              As time advances, the vortical structure decays due to viscosity while preserving the analytic
-              spatial form. This makes the benchmark useful for validating both the temporal dissipation rate
-              and the phase accuracy of the computed velocity field.
-            </p>
-            <p>
-              For a lattice Boltzmann solver, this case is a clean verification target because there are no
-              complex boundaries, forcing ambiguities, or geometry effects hiding the core fluid dynamics.
-              The main question is simple: does the numerical solution decay exactly the way the Navier-Stokes
-              reference predicts?
-            </p>
-          </article>
-          <article class="featured-card reveal">
-            <h3>What this testcase verifies</h3>
-            <div class="benchmark-points">
-              <div class="benchmark-point">
-                <span class="point-index">01</span>
-                <p>Recovery of the vortex topology and symmetry over time.</p>
-              </div>
-              <div class="benchmark-point">
-                <span class="point-index">02</span>
-                <p>Correct viscous damping rate for velocity magnitude and kinetic energy.</p>
-              </div>
-              <div class="benchmark-point">
-                <span class="point-index">03</span>
-                <p>Agreement between numerical and analytical fields through an L2-type error metric.</p>
-              </div>
-            </div>
-          </article>
-        </div>
-        <div class="featured-equations reveal">
-          <article class="featured-equation-card">
-            <h3>Control equations</h3>
-            <div class="equation-block">
-              \[
-              \frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \mathbf{u}) = 0
-              \]
-              \[
+              \frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \mathbf{u}) = 0,
+              \qquad
               \frac{\partial (\rho \mathbf{u})}{\partial t}
               + \nabla \cdot (\rho \mathbf{u} \otimes \mathbf{u})
               = -\nabla p + \mu \nabla^2 \mathbf{u}
               \]
             </div>
-            <p>
-              On this page the testcase is framed with the weakly compressible flow equations used throughout the showcase,
-              while the benchmark target itself is the classical viscous Taylor-Green decay solution.
-            </p>
+            <p>These relations connect the lattice populations to the flow quantities compared against benchmark references and published profiles.</p>
           </article>
-          <article class="featured-equation-card">
-            <h3>Analytical reference solution</h3>
+          <article class="equation-card reveal">
+            <h3>Benchmark references</h3>
             <div class="equation-block">
               \[
-              u(x,y,t) = U_0 \cos(kx)\sin(ky)\exp(-2\nu k^2 t)
+              \mathbf{u}_{TG}(t) \propto \exp(-\alpha \nu t),
+              \qquad
+              u_{P}(r) \propto 1-r^2
               \]
               \[
-              v(x,y,t) = -U_0 \sin(kx)\cos(ky)\exp(-2\nu k^2 t)
-              \]
-              \[
-              p(x,y,t) = p_0 - \frac{\rho U_0^2}{4}\left[\cos(2kx)+\cos(2ky)\right]\exp(-4\nu k^2 t)
+              \mathbf{u}\big|_{\text{walls}} = 0,
+              \qquad
+              \mathbf{u}\big|_{\text{lid}} = U_{lid}\,\mathbf{e}_x
               \]
             </div>
-            <p>
-              These closed-form fields give a direct target for comparison, so the animation can be paired with
-              an explicit statement of the expected decay law instead of only a qualitative visual impression.
-            </p>
+            <p>Taylor-Green measures decay, Poiseuille measures profile recovery, and the driven cavity measures no-slip wall response and recirculating structures.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="suite" class="section">
+        <div class="section-heading reveal">
+          <p class="section-kicker">Benchmark Structure</p>
+          <h2>Three families, each split into 2D and 3D</h2>
+          <p>
+            The current homepage is deliberately narrow: it focuses on the canonical validation ladder before introducing more applied geometries or particle phenomena.
+          </p>
+        </div>
+        <div class="suite-grid">
+          <article class="suite-card reveal">
+            <p class="case-tag">Family 01</p>
+            <h3>Taylor-Green vortex</h3>
+            <p>Checks transient vortex decay and viscous dissipation with periodic reference fields.</p>
+            <div class="family-pills">
+              <span>2D Taylor-Green</span>
+              <span>3D Taylor-Green</span>
+            </div>
+          </article>
+          <article class="suite-card reveal">
+            <p class="case-tag">Family 02</p>
+            <h3>Poiseuille flow</h3>
+            <p>Checks pressure-driven channel or pipe flow against known steady-state profile recovery.</p>
+            <div class="family-pills">
+              <span>2D Poiseuille</span>
+              <span>3D Poiseuille</span>
+            </div>
+          </article>
+          <article class="suite-card reveal">
+            <p class="case-tag">Family 03</p>
+            <h3>Driven cavity flow</h3>
+            <p>Checks wall-induced recirculation, shear layers, and velocity-profile consistency in enclosed domains.</p>
+            <div class="family-pills">
+              <span>2D Driven cavity</span>
+              <span>3D Driven cavity</span>
+            </div>
           </article>
         </div>
       </section>
@@ -221,88 +189,86 @@
       <section id="cases" class="section">
         <div class="section-heading reveal">
           <p class="section-kicker">Validation Gallery</p>
-          <h2>Drop in media and the gallery will render it</h2>
+          <h2>Six core benchmark panels</h2>
           <p>
-            Put an MP4, WebM, GIF, or PNG in <code>docs/assets/media/</code> with the case slug as the filename.
-            Until then, the page shows a built-in placeholder for each case.
+            The gallery is now organized by dimension rather than by a single featured case.
+            This keeps the site balanced and leaves space for later application sections.
           </p>
         </div>
-        <div id="case-grid" class="case-grid"></div>
+        <div class="case-group reveal">
+          <div class="case-group-head">
+            <p class="case-group-tag">2-D Benchmarks</p>
+            <h3>Planar validation cases</h3>
+          </div>
+          <div id="case-grid-2d" class="case-grid"></div>
+        </div>
+        <div class="case-group reveal">
+          <div class="case-group-head">
+            <p class="case-group-tag">3-D Benchmarks</p>
+            <h3>Volumetric validation cases</h3>
+          </div>
+          <div id="case-grid-3d" class="case-grid"></div>
+        </div>
       </section>
 
       <section id="workflow" class="section split-layout workflow-section">
         <div class="section-copy reveal">
           <p class="section-kicker">Workflow</p>
-          <h2>From simulation output to public media</h2>
+          <h2>From benchmark output to media slot</h2>
           <p>
-            This repository is the presentation layer. Generate data in your solver environment,
-            convert the output to a short animation or figure, and publish only the media and benchmark explanation here.
+            The same pipeline can be reused for all six benchmark panels now, and later for aneurysm or particle videos:
+            run the case in the solver workspace, export visualization frames, then copy the final media into the public showcase repo.
           </p>
-          <pre class="code-block"><code># 1. Run the benchmark in your solver workspace
-# example: Taylor-Green regression + HDF export
+          <pre class="code-block"><code># 1. Run a solver benchmark in your local workspace
+# 2. Export frames or a short MP4 from the post-processing step
+# 3. Place the media in this repo using the case slug
 
-# 2. Convert snapshots to presentation media
-ffmpeg -framerate 12 -i frame_%04d.png -pix_fmt yuv420p 2d_taylor_green.mp4
-
-# 3. Copy the media into this repo
 docs/assets/media/2d_taylor_green.mp4
+docs/assets/media/3d_poiseuille.mp4
+docs/assets/media/2d_driven_cavity.mp4
 </code></pre>
         </div>
         <div class="workflow-cards reveal">
           <article class="workflow-card">
-            <h3>1. Generate benchmark data</h3>
-            <p>Run the case locally, collect HDF snapshots or plots, and verify the quantitative metric you want to present.</p>
+            <h3>1. Benchmark generation</h3>
+            <p>Run the 2D or 3D benchmark, collect the reference metric, and keep the final visualization sequence consistent across cases.</p>
           </article>
           <article class="workflow-card">
-            <h3>2. Export media</h3>
-            <p>Use ParaView, Python, or ffmpeg to produce a short clip or still image with clean captions and a scalar bar if needed.</p>
+            <h3>2. Media conversion</h3>
+            <p>Use ParaView, Python, or ffmpeg to turn solver snapshots into short clips with clean color maps and optional annotations.</p>
           </article>
           <article class="workflow-card">
-            <h3>3. Publish the story</h3>
-            <p>Push the media to this repo and let GitHub Pages serve a clean scientific landing page without exposing the private source tree.</p>
+            <h3>3. Public publishing</h3>
+            <p>Drop the media into `docs/assets/media/` and let GitHub Pages serve the updated validation gallery automatically.</p>
           </article>
         </div>
       </section>
 
-      <section id="structure" class="section">
+      <section id="future" class="section">
         <div class="section-heading reveal">
-          <p class="section-kicker">Project Map</p>
-          <h2>Where to extend the site</h2>
+          <p class="section-kicker">Expansion Lanes</p>
+          <h2>Reserved space for future application videos</h2>
+          <p>
+            Once the canonical solver benchmarks are in place, the next layers can focus on application-rich flow phenomena.
+            The current page structure is meant to scale into those additions cleanly.
+          </p>
         </div>
-        <div class="structure-grid">
-          <article class="structure-card reveal">
-            <h3>Site files</h3>
-            <pre class="code-block"><code>docs/
-  index.html
-  .nojekyll
-  assets/
-    site.css
-    site.js
-    media/
-</code></pre>
+        <div class="future-grid">
+          <article class="future-card reveal">
+            <h3>Aneurysm flow simulations</h3>
+            <p>Add patient-specific or idealized aneurysm videos later as a new application section built on top of the benchmark-backed solver narrative.</p>
           </article>
-          <article class="structure-card reveal">
-            <h3>Media naming convention</h3>
-            <pre class="code-block"><code>docs/assets/media/2d_taylor_green.mp4
-docs/assets/media/2d_poiseuille.mp4
-docs/assets/media/gaussian_hill.gif
-docs/assets/media/particle_sed2.png
-</code></pre>
-          </article>
-          <article class="structure-card reveal">
-            <h3>Publishing note</h3>
-            <p>
-              In repository settings, deploy GitHub Pages from branch <code>master</code> and folder <code>/docs</code>.
-              After that, each push will refresh the public site automatically.
-            </p>
+          <article class="future-card reveal">
+            <h3>Particle-collision videos</h3>
+            <p>Append particle interaction or collision clips later without disturbing the canonical benchmark blocks already established on the homepage.</p>
           </article>
         </div>
       </section>
     </main>
 
     <footer class="footer section reveal">
-      <p>Lattice Boltzmann showcase scaffold for public benchmark presentation, scientific explanation, and media-based communication.</p>
-      <p class="footer-note">Next step: replace placeholders with exported case media and add paper, DOI, or contact links when available.</p>
+      <p>Lattice Boltzmann solver showcase focused on canonical validation first and application media second.</p>
+      <p class="footer-note">Next step: populate the six benchmark cards with real MP4 files, then add new sections for aneurysm flow and particle interactions.</p>
     </footer>
   </div>
 

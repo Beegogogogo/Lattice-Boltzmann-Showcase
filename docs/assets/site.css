@@ -1,8 +1,8 @@
 :root {
   --bg: #f3ede2;
-  --bg-strong: #e3d7c0;
-  --surface: rgba(255, 251, 244, 0.82);
-  --surface-strong: rgba(14, 40, 44, 0.92);
+  --surface: rgba(255, 251, 244, 0.84);
+  --surface-alt: rgba(255, 255, 255, 0.72);
+  --surface-dark: rgba(14, 40, 44, 0.92);
   --ink: #10272a;
   --ink-soft: #4a5c5f;
   --teal: #0f8b8d;
@@ -12,7 +12,6 @@
   --shadow: 0 18px 48px rgba(37, 42, 43, 0.13);
   --radius-xl: 32px;
   --radius-lg: 24px;
-  --radius-md: 18px;
   --mono: "IBM Plex Mono", monospace;
   --sans: "Space Grotesk", sans-serif;
   --serif: "Fraunces", serif;
@@ -88,7 +87,8 @@ body::before {
 .panel-title,
 .case-tag,
 .metric-label,
-.media-badge {
+.media-badge,
+.case-group-tag {
   font-family: var(--mono);
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -110,7 +110,7 @@ h3 {
 }
 
 h1 {
-  font-size: clamp(2.8rem, 6vw, 5.8rem);
+  font-size: clamp(2.7rem, 6vw, 5.8rem);
   max-width: 11ch;
 }
 
@@ -128,7 +128,7 @@ p {
 }
 
 .hero-text {
-  max-width: 58ch;
+  max-width: 60ch;
   font-size: 1.06rem;
 }
 
@@ -177,14 +177,15 @@ p {
 
 .hero-metrics li,
 .panel-card,
-.pillar,
+.scope-card,
 .equation-card,
+.suite-card,
 .workflow-card,
-.structure-card,
+.future-card,
 .case-card {
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.72);
+  background: var(--surface-alt);
 }
 
 .hero-metrics li {
@@ -202,8 +203,7 @@ p {
 .hero-panel {
   padding: 18px;
   border-radius: var(--radius-lg);
-  background:
-    linear-gradient(180deg, rgba(16, 39, 42, 0.94), rgba(27, 56, 60, 0.92));
+  background: linear-gradient(180deg, rgba(16, 39, 42, 0.94), rgba(27, 56, 60, 0.92));
   color: #f3ede2;
 }
 
@@ -211,13 +211,26 @@ p {
   color: rgba(243, 237, 226, 0.78);
 }
 
-.panel-stack {
+.panel-stack,
+.scope-grid,
+.equation-grid,
+.suite-grid,
+.workflow-cards,
+.future-grid {
   display: grid;
-  gap: 14px;
+  gap: 16px;
+}
+
+.panel-card,
+.scope-card,
+.equation-card,
+.suite-card,
+.workflow-card,
+.future-card {
+  padding: 20px;
 }
 
 .panel-card {
-  padding: 18px;
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(255, 255, 255, 0.12);
 }
@@ -233,38 +246,14 @@ p {
   gap: 24px;
 }
 
-.pillars,
-.equation-grid,
-.workflow-cards,
-.structure-grid {
-  display: grid;
-  gap: 16px;
-}
-
-.featured-grid,
-.featured-equations,
-.benchmark-points {
-  display: grid;
-  gap: 16px;
-}
-
-.pillars {
+.scope-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.featured-grid,
-.featured-equations {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin-top: 18px;
-}
-
-.pillar,
-.equation-card,
-.workflow-card,
-.structure-card,
-.featured-card,
-.featured-equation-card {
-  padding: 20px;
+.equation-grid,
+.suite-grid,
+.future-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .pillar-index {
@@ -275,38 +264,8 @@ p {
   font-size: 0.8rem;
 }
 
-.benchmark-point {
-  display: grid;
-  grid-template-columns: 42px 1fr;
-  gap: 12px;
-  align-items: start;
-  padding-top: 10px;
-  border-top: 1px solid rgba(16, 39, 42, 0.08);
-}
-
-.point-index {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: rgba(15, 139, 141, 0.12);
-  color: var(--teal);
-  font-family: var(--mono);
-  font-size: 0.76rem;
-}
-
-.equation-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: 20px;
-}
-
-.featured-card,
-.featured-equation-card {
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.72);
+.section-heading {
+  max-width: 72ch;
 }
 
 .equation-block {
@@ -317,20 +276,60 @@ p {
   overflow-x: auto;
 }
 
-.section-heading {
-  max-width: 72ch;
+.suite-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.suite-card::after {
+  content: "";
+  position: absolute;
+  inset: auto -10% -30% 45%;
+  height: 180px;
+  background: radial-gradient(circle, rgba(15, 139, 141, 0.12), transparent 65%);
+  pointer-events: none;
+}
+
+.family-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.family-pills span {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(15, 139, 141, 0.1);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+}
+
+.case-group + .case-group {
+  margin-top: 28px;
+}
+
+.case-group-head {
+  margin-bottom: 14px;
+}
+
+.case-group-tag {
+  color: var(--rust);
+  margin: 0 0 8px;
 }
 
 .case-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 18px;
-  margin-top: 22px;
 }
 
 .case-card {
   display: grid;
-  grid-template-columns: minmax(260px, 0.85fr) minmax(0, 1.15fr);
+  grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr);
   overflow: hidden;
 }
 
@@ -445,10 +444,6 @@ p {
   overflow-wrap: anywhere;
 }
 
-.inline-equation {
-  color: var(--ink);
-}
-
 .code-block {
   margin: 0;
   padding: 18px;
@@ -464,16 +459,6 @@ p {
   grid-template-columns: 1fr;
 }
 
-.structure-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: 18px;
-}
-
-code {
-  font-family: var(--mono);
-  font-size: 0.92em;
-}
-
 .footer {
   display: flex;
   justify-content: space-between;
@@ -484,6 +469,11 @@ code {
 .footer-note {
   max-width: 36ch;
   text-align: right;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 0.92em;
 }
 
 .reveal {
@@ -500,16 +490,15 @@ code {
 @media (max-width: 1080px) {
   .hero,
   .split-layout,
-  .case-card,
   .equation-grid,
-  .structure-grid,
-  .featured-grid,
-  .featured-equations {
+  .suite-grid,
+  .scope-grid,
+  .future-grid,
+  .case-card {
     grid-template-columns: 1fr;
   }
 
-  .pillars,
-  .case-grid {
+  .hero-metrics {
     grid-template-columns: 1fr;
   }
 
@@ -537,12 +526,13 @@ code {
     max-width: none;
   }
 
-  .hero-metrics {
+  .detail-row,
+  .case-head {
     grid-template-columns: 1fr;
   }
 
-  .detail-row {
-    grid-template-columns: 1fr;
+  .case-head {
+    display: grid;
   }
 
   .case-media {

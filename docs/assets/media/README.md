@@ -7,13 +7,11 @@ Place presentation media in this folder so the gallery can load it automatically
 Use the case slug with one of the supported extensions:
 
 - `2d_taylor_green.mp4`
+- `3d_taylor_green.mp4`
 - `2d_poiseuille.mp4`
-- `gaussian_hill.mp4`
-- `curved_boundary.png`
-- `mass_conservation.mp4`
-- `particle_sed2.mp4`
-- `bulk_viscosity.mp4`
-- `boundary_rotation.mp4`
+- `3d_poiseuille.mp4`
+- `2d_driven_cavity.mp4`
+- `3d_driven_cavity.mp4`
 
 The loader also accepts `webm`, `gif`, and `png` for each slug.
 
@@ -22,5 +20,6 @@ The loader also accepts `webm`, `gif`, and `png` for each slug.
 - Use `mp4` for most gallery entries because it is smaller and cleaner than GIF.
 - Keep clips short, usually 4 to 12 seconds.
 - Add captions, legends, or scalar bars before placing the media here.
+- Later application sections can use new slugs such as `aneurysm_flow.mp4` or `particle_collision.mp4` after the page data is extended.
 
 If no matching file exists, the page shows a built-in placeholder card instead.
