@@ -119,6 +119,10 @@ h1 {
   text-wrap: pretty;
 }
 
+.hero h1 {
+  text-align: center;
+}
+
 .hero-title-line {
   display: block;
 }
