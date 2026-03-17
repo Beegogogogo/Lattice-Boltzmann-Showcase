@@ -342,7 +342,6 @@ function renderMedicalShowcase() {
     button.className = "medical-showcase-button";
     button.innerHTML = `
       <span class="medical-showcase-button-label">${showcase.title}</span>
-      <span class="medical-showcase-button-meta">${showcase.mainMedia ? "Media available" : "Media coming next"}</span>
     `;
     button.addEventListener("click", () => {
       activeId = showcase.id;
