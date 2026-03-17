@@ -347,6 +347,16 @@ p {
   background: rgba(255, 255, 255, 0.62);
 }
 
+.future-submedia {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  margin: 0 0 12px;
+  border-radius: 14px;
+  background: rgba(16, 39, 42, 0.08);
+}
+
 .future-subkicker {
   margin: 0 0 8px;
   color: var(--rust);
