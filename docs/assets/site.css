@@ -270,7 +270,7 @@ p {
 
 .direction-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   gap: 16px;
 }
 
@@ -301,6 +301,11 @@ p {
 .direction-card--particle {
   background: linear-gradient(135deg, rgba(32, 73, 41, 0.92), rgba(58, 132, 86, 0.48));
   border-color: rgba(152, 231, 181, 0.24);
+}
+
+.direction-card--turbulent {
+  background: linear-gradient(135deg, rgba(36, 49, 96, 0.92), rgba(86, 111, 178, 0.5));
+  border-color: rgba(173, 194, 255, 0.24);
 }
 
 .panel-card h2 {
