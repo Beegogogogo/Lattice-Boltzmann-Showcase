@@ -168,7 +168,8 @@ p {
 
 .hero-text {
   max-width: 100%;
-  font-size: 1.16rem;
+  font-size: 1.28rem;
+  line-height: 1.68;
 }
 
 .hero-identity {
@@ -203,7 +204,7 @@ p {
   display: grid;
   gap: 2px;
   color: var(--ink-soft);
-  font-size: 0.96rem;
+  font-size: 1.05rem;
 }
 
 .hero-actions {
