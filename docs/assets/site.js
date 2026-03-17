@@ -286,7 +286,6 @@ function renderMedicalStage(container, showcase) {
   const head = document.createElement("div");
   head.className = "medical-stage-head";
   head.innerHTML = `
-    <p class="medical-stage-kicker">${showcase.index}</p>
     <h4 class="medical-stage-title">${showcase.title}</h4>
     <p class="medical-stage-summary">${showcase.blurb}</p>
   `;
@@ -342,7 +341,6 @@ function renderMedicalShowcase() {
     button.type = "button";
     button.className = "medical-showcase-button";
     button.innerHTML = `
-      <span class="medical-showcase-button-index">${showcase.index}</span>
       <span class="medical-showcase-button-label">${showcase.title}</span>
       <span class="medical-showcase-button-meta">${showcase.mainMedia ? "Media available" : "Media coming next"}</span>
     `;
