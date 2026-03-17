@@ -357,6 +357,17 @@ p {
   background: rgba(16, 39, 42, 0.08);
 }
 
+.future-submedia-inline,
+.future-card-media-inline {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  margin: 12px 0 0;
+  border-radius: 12px;
+  background: rgba(16, 39, 42, 0.08);
+}
+
 .future-subkicker {
   margin: 0 0 8px;
   color: var(--rust);
