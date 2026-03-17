@@ -70,7 +70,7 @@ body::before {
   overflow: hidden;
   position: relative;
   isolation: isolate;
-  min-height: clamp(620px, 54vw, 860px);
+  min-height: clamp(660px, 56vw, 900px);
 }
 
 .hero-copy {
@@ -78,16 +78,16 @@ body::before {
   z-index: 2;
   width: 100%;
   max-width: none;
-  padding-right: min(18vw, 240px);
+  padding-right: 0;
   padding-bottom: 160px;
 }
 
 .hero::before {
   content: "";
   position: absolute;
-  right: -72px;
-  bottom: -70px;
-  width: min(40vw, 560px);
+  right: -108px;
+  bottom: -138px;
+  width: min(34vw, 500px);
   aspect-ratio: 1;
   background: url("media/desktop_maneurysm.png") no-repeat right bottom / contain;
   mix-blend-mode: multiply;
@@ -143,7 +143,7 @@ h1 {
 }
 
 .hero h1 {
-  width: min(100%, 1280px);
+  width: 100%;
   margin-inline: auto;
   text-align: center;
 }
@@ -167,7 +167,7 @@ p {
 }
 
 .hero-text {
-  max-width: min(100%, 1320px);
+  max-width: 100%;
   font-size: 1.16rem;
 }
 
@@ -852,14 +852,14 @@ code {
   }
 
   .hero-copy {
-    padding-right: min(20vw, 200px);
+    padding-right: 0;
     padding-bottom: 90px;
   }
 
   .hero::before {
-    right: -36px;
-    bottom: -36px;
-    width: min(38vw, 320px);
+    right: -52px;
+    bottom: -54px;
+    width: min(34vw, 280px);
     opacity: 0.88;
   }
 }
