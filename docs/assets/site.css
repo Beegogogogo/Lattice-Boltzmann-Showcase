@@ -335,13 +335,13 @@ p {
 
 .future-subgrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 12px;
-  margin-top: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 18px;
+  margin-top: 18px;
 }
 
 .future-subcard {
-  padding: 16px;
+  padding: 20px;
   border: 1px solid rgba(16, 39, 42, 0.08);
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.62);
