@@ -308,6 +308,11 @@ p {
   border-color: rgba(173, 194, 255, 0.24);
 }
 
+.direction-card--porous {
+  background: linear-gradient(135deg, rgba(82, 69, 43, 0.92), rgba(149, 126, 78, 0.52));
+  border-color: rgba(226, 199, 141, 0.24);
+}
+
 .panel-card h2 {
   font-size: 1.32rem;
   margin-bottom: 8px;
