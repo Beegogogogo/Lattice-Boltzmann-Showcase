@@ -162,17 +162,17 @@ u(r)=U_{\\max}\\left(1-\\left(\\frac{r}{R}\\right)^2\\right)
 const caseFamilies = [
   {
     id: "taylor_green",
-    title: "Taylor-Green Vortex",
+    title: "Benchmark I: Taylor-Green Vortex",
     description: "2D and 3D periodic vortex-decay benchmarks for transient viscous dissipation."
   },
   {
     id: "poiseuille",
-    title: "Poiseuille Flow",
+    title: "Benchmark II: Poiseuille Flow",
     description: "2D and 3D pressure-driven internal-flow benchmarks for profile recovery."
   },
   {
     id: "driven_cavity",
-    title: "Driven Cavity Flow",
+    title: "Benchmark III: Driven Cavity Flow",
     description: "2D and 3D wall-driven recirculation benchmarks for enclosed-domain validation."
   }
 ];
@@ -490,7 +490,6 @@ function renderCases() {
     const familyHead = document.createElement("div");
     familyHead.className = "case-family-head";
     familyHead.innerHTML = `
-      <p class="case-family-kicker">Benchmark family</p>
       <h3>${family.title}</h3>
       <p>${family.description}</p>
     `;
