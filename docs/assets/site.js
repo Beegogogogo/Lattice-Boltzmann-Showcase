@@ -94,17 +94,16 @@ u(y)=U_{\\max}\\left(1-\\left(\\frac{2y}{H}\\right)^2\\right)
     description: "Three-dimensional periodic vortex benchmark for assessing how the solver captures volumetric structure, dissipation, and symmetry in a canonical transient flow.",
     physics: "3D periodic vortex decay",
     reference: "Classical Taylor-Green initial condition with monitored kinetic-energy decay.",
-    equationTitle: "Initial condition and monitored quantity",
+    equationTitle: "Initial condition",
     equation: `
 \\[
-u(x,y,z,0)=U_0\\sin(x)\\cos(y)\\cos(z),
-\\qquad
-v(x,y,z,0)=-U_0\\cos(x)\\sin(y)\\cos(z),
-\\qquad
-w=0
+u(x,y,z,0)=U_0\\sin(x)\\cos(y)\\cos(z)
 \\]
 \\[
-E_k(t)=\\frac{1}{2}\\int_{\\Omega}\\lVert\\mathbf{u}\\rVert^2\\,d\\Omega
+v(x,y,z,0)=-U_0\\cos(x)\\sin(y)\\cos(z)
+\\]
+\\[
+w(x,y,z,0)=0
 \\]
 `,
     workflow: "Render iso-surfaces or planar slices and compare kinetic-energy decay against the reference trend.",
