@@ -178,12 +178,193 @@ const caseFamilies = [
   }
 ];
 
-const MEDIA_VERSION = "20260316-22";
+const medicalShowcases = [
+  {
+    id: "idealized_aneurysm",
+    index: "Showcase 01",
+    title: "Idealized aneurysm",
+    blurb: "Simplified aneurysm geometries for resolving vortex development, impingement zones, and wall-shear-driven flow organization.",
+    stageText: "This case isolates the geometric effect of aneurysm expansion without patient-specific branching complexity, making it a clean entry point for explaining recirculation zones and near-wall transport behavior.",
+    mainMedia: {
+      src: "assets/media/idealized_aneurysm.gif",
+      alt: "Idealized aneurysm flow visualization"
+    },
+    inlineMedia: [
+      {
+        src: "assets/media/idealized_aneurysm_inline.gif",
+        alt: "Secondary idealized aneurysm flow visualization"
+      }
+    ]
+  },
+  {
+    id: "patient_specific_aneurysm",
+    index: "Showcase 02",
+    title: "Patient specific aneurysm",
+    blurb: "Reconstructed vascular geometries for examining impingement regions, wall-shear distributions, and case-specific flow patterns.",
+    stageText: "Patient-specific aneurysm cases move the showcase from canonical shapes to anatomy-driven flow structure. This is where geometry-specific jets, recirculation pockets, and local hemodynamic load become visually and scientifically meaningful.",
+    mainMedia: {
+      src: "assets/media/patient_specific_aneurysm.gif",
+      alt: "Patient-specific aneurysm flow visualization"
+    },
+    inlineMedia: [
+      {
+        src: "assets/media/patient_specific_aneurysm_inline_1.gif",
+        alt: "Secondary patient-specific aneurysm flow visualization"
+      },
+      {
+        src: "assets/media/patient_specific_aneurysm_inline_2.gif",
+        alt: "Additional patient-specific aneurysm flow visualization"
+      }
+    ]
+  },
+  {
+    id: "blood_non_newtonian",
+    index: "Showcase 03",
+    title: "Blood non-Newtonian behavior",
+    blurb: "Shear-thinning rheology studies for comparing Newtonian and non-Newtonian recirculation and near-wall transport patterns.",
+    stageText: "This topic is reserved for side-by-side rheology-driven comparisons, showing how viscosity variation changes flow persistence, recirculation intensity, and local transport behavior.",
+    mainMedia: null,
+    inlineMedia: []
+  },
+  {
+    id: "stent",
+    index: "Showcase 04",
+    title: "Stent",
+    blurb: "Implant-driven flow reorganization around struts, wakes, and altered near-wall hemodynamic exposure.",
+    stageText: "The stent module is positioned to show how implanted structures redirect flow, generate localized wakes, and modify wall-adjacent transport in treated vessels.",
+    mainMedia: null,
+    inlineMedia: []
+  },
+  {
+    id: "hemodynamic_indicators",
+    index: "Showcase 05",
+    title: "Hemodynamic indicators",
+    blurb: "Derived metrics such as wall shear stress, oscillatory behavior, and residence-time-related indicators.",
+    stageText: "This slot is intended for derived hemodynamic quantities that translate raw velocity fields into clinically and mechanistically interpretable markers.",
+    mainMedia: null,
+    inlineMedia: []
+  },
+  {
+    id: "larynx_simulation",
+    index: "Showcase 06",
+    title: "Larynx simulation",
+    blurb: "Airway and laryngeal flow structures with jet formation, recirculation, and transport patterns relevant to vocal-tract dynamics.",
+    stageText: "The larynx block is prepared for airway-focused cases where jet structure and confinement-driven recirculation become the primary visual story.",
+    mainMedia: null,
+    inlineMedia: []
+  },
+  {
+    id: "thrombosis_simulation",
+    index: "Showcase 07",
+    title: "Thrombosis simulation",
+    blurb: "Flow-coupled platelet transport, activation, and accumulation patterns for clot-growth scenarios.",
+    stageText: "This module is reserved for thrombosis-oriented simulations where flow evolution interacts with platelet transport and localized accumulation processes.",
+    mainMedia: null,
+    inlineMedia: []
+  }
+];
+
+const MEDIA_VERSION = "20260317-7";
 
 function createPlaceholder(caseData) {
   const shell = document.createElement("div");
   shell.className = "case-media-inner";
   return shell;
+}
+
+function createMedicalMedia(media, className) {
+  const image = document.createElement("img");
+  image.className = className;
+  image.src = media.src;
+  image.alt = media.alt;
+  return image;
+}
+
+function renderMedicalStage(container, showcase) {
+  container.replaceChildren();
+
+  const head = document.createElement("div");
+  head.className = "medical-stage-head";
+  head.innerHTML = `
+    <p class="medical-stage-kicker">${showcase.index}</p>
+    <h4 class="medical-stage-title">${showcase.title}</h4>
+    <p class="medical-stage-summary">${showcase.blurb}</p>
+  `;
+
+  const layout = document.createElement("div");
+  layout.className = "medical-stage-layout";
+
+  if (showcase.mainMedia) {
+    layout.appendChild(createMedicalMedia(showcase.mainMedia, "medical-stage-main"));
+  } else {
+    const empty = document.createElement("div");
+    empty.className = "medical-stage-empty";
+    empty.innerHTML = "<p>Primary media will be added here as this showcase is populated.</p>";
+    layout.appendChild(empty);
+  }
+
+  const copy = document.createElement("div");
+  copy.className = "medical-stage-copy";
+  copy.innerHTML = `<p>${showcase.stageText}</p>`;
+  layout.appendChild(copy);
+
+  container.append(head, layout);
+
+  if (showcase.inlineMedia.length > 0) {
+    const gallery = document.createElement("div");
+    gallery.className = "medical-stage-gallery";
+    for (const media of showcase.inlineMedia) {
+      gallery.appendChild(createMedicalMedia(media, ""));
+    }
+    container.appendChild(gallery);
+  }
+}
+
+function renderMedicalShowcase() {
+  const shell = document.getElementById("medical-showcase-shell");
+  if (!shell) {
+    return;
+  }
+
+  const root = document.createElement("div");
+  root.className = "medical-showcase";
+
+  const nav = document.createElement("div");
+  nav.className = "medical-showcase-nav";
+
+  const stage = document.createElement("div");
+  stage.className = "medical-showcase-stage";
+
+  let activeId = medicalShowcases[0]?.id ?? null;
+
+  const buttons = medicalShowcases.map((showcase) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "medical-showcase-button";
+    button.innerHTML = `
+      <span class="medical-showcase-button-index">${showcase.index}</span>
+      <span class="medical-showcase-button-label">${showcase.title}</span>
+      <span class="medical-showcase-button-meta">${showcase.mainMedia ? "Media available" : "Media coming next"}</span>
+    `;
+    button.addEventListener("click", () => {
+      activeId = showcase.id;
+      syncMedicalShowcase();
+    });
+    nav.appendChild(button);
+    return { id: showcase.id, node: button };
+  });
+
+  function syncMedicalShowcase() {
+    const activeShowcase = medicalShowcases.find((item) => item.id === activeId) ?? medicalShowcases[0];
+    renderMedicalStage(stage, activeShowcase);
+    for (const button of buttons) {
+      button.node.classList.toggle("is-active", button.id === activeShowcase.id);
+    }
+  }
+
+  root.append(nav, stage);
+  shell.appendChild(root);
+  syncMedicalShowcase();
 }
 
 async function attachMedia(container, caseData) {
@@ -356,6 +537,7 @@ function setupReveal() {
 
 async function renderPage() {
   renderCases();
+  renderMedicalShowcase();
 
   if (window.MathJax && typeof window.MathJax.typesetPromise === "function") {
     await window.MathJax.typesetPromise();

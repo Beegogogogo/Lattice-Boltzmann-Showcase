@@ -333,21 +333,6 @@ p {
   grid-column: 1 / -1;
 }
 
-.future-subgrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-  gap: 18px;
-  margin-top: 18px;
-}
-
-.future-subcard {
-  padding: 20px;
-  border: 1px solid rgba(16, 39, 42, 0.08);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.62);
-}
-
-.future-submedia,
 .future-card-media {
   display: block;
   width: 100%;
@@ -357,7 +342,6 @@ p {
   background: rgba(16, 39, 42, 0.08);
 }
 
-.future-submedia-inline,
 .future-card-media-inline {
   display: block;
   width: 100%;
@@ -368,24 +352,167 @@ p {
   background: rgba(16, 39, 42, 0.08);
 }
 
-.future-subkicker {
-  margin: 0 0 8px;
+.medical-showcase {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.34fr) minmax(0, 0.66fr);
+  gap: 22px;
+  margin-top: 18px;
+}
+
+.medical-showcase-nav {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.medical-showcase-button {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid rgba(16, 39, 42, 0.1);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.medical-showcase-button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(15, 139, 141, 0.28);
+}
+
+.medical-showcase-button.is-active {
+  background: linear-gradient(135deg, rgba(16, 39, 42, 0.95), rgba(25, 61, 66, 0.9));
+  color: #f7f1e6;
+  border-color: rgba(15, 139, 141, 0.34);
+  box-shadow: 0 14px 30px rgba(16, 39, 42, 0.16);
+}
+
+.medical-showcase-button.is-active .medical-showcase-button-label,
+.medical-showcase-button.is-active .medical-showcase-button-meta {
+  color: inherit;
+}
+
+.medical-showcase-button-index {
+  display: block;
+  margin-bottom: 6px;
   color: var(--rust);
   font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 0.72rem;
 }
 
-.future-subcard h4 {
+.medical-showcase-button.is-active .medical-showcase-button-index {
+  color: rgba(208, 242, 237, 0.88);
+}
+
+.medical-showcase-button-label {
+  display: block;
+  margin-bottom: 4px;
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  line-height: 1.1;
+}
+
+.medical-showcase-button-meta {
+  display: block;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+.medical-showcase-stage {
+  min-height: 100%;
+  padding: 22px;
+  border: 1px solid rgba(16, 39, 42, 0.1);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.medical-stage-kicker {
+  margin: 0 0 10px;
+  color: var(--rust);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.medical-stage-head {
+  margin-bottom: 18px;
+}
+
+.medical-stage-title {
   margin: 0 0 8px;
   font-family: var(--serif);
-  font-size: 1.08rem;
-  line-height: 1.15;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  line-height: 1.02;
 }
 
-.future-subcard p:last-child {
+.medical-stage-summary {
+  max-width: 54ch;
   margin-bottom: 0;
+}
+
+.medical-stage-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.medical-stage-main {
+  display: block;
+  width: 100%;
+  border-radius: 18px;
+  background: rgba(16, 39, 42, 0.08);
+}
+
+.medical-stage-copy {
+  padding: 18px;
+  border: 1px solid rgba(16, 39, 42, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.medical-stage-copy p:last-child {
+  margin-bottom: 0;
+}
+
+.medical-stage-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.medical-stage-gallery img {
+  display: block;
+  width: 100%;
+  border-radius: 14px;
+  background: rgba(16, 39, 42, 0.08);
+}
+
+.medical-stage-empty {
+  min-height: 320px;
+  padding: 24px;
+  border: 1px dashed rgba(16, 39, 42, 0.16);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at top left, rgba(15, 139, 141, 0.12), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(248, 244, 234, 0.64));
+  display: flex;
+  align-items: end;
+}
+
+.medical-stage-empty p {
+  max-width: 24ch;
+  margin-bottom: 0;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.24rem;
+  line-height: 1.08;
 }
 
 .pillar-index {
@@ -661,6 +788,11 @@ code {
 
   .direction-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .medical-showcase,
+  .medical-stage-layout {
+    grid-template-columns: 1fr;
   }
 
   .hero-metrics {
