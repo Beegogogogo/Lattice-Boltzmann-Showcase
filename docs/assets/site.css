@@ -533,9 +533,9 @@ p {
 
 .equation-block {
   margin: 16px 0;
-  padding: 14px;
-  border-radius: 16px;
-  background: rgba(16, 39, 42, 0.05);
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
   overflow-x: auto;
 }
 
@@ -696,15 +696,15 @@ p {
 
 .case-equation-card {
   margin-bottom: 16px;
-  padding: 16px;
-  border: 1px solid rgba(16, 39, 42, 0.08);
-  border-radius: 18px;
-  background: rgba(16, 39, 42, 0.04);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 }
 
 .case-equation-block {
   margin: 0;
-  background: rgba(255, 255, 255, 0.78);
+  background: transparent;
 }
 
 .case-details {
