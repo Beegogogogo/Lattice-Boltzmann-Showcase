@@ -235,8 +235,21 @@ const medicalShowcases = [
     inlineMedia: []
   },
   {
-    id: "hemodynamic_indicators",
+    id: "rbc_particle_flow",
     index: "Showcase 05",
+    title: "RBC particle flow",
+    blurb: "Rigid-cell transport in vessel-scale flow to show suspended-cell migration, interaction patterns, and particle-laden hemodynamics.",
+    stageText: "This showcase introduces red-blood-cell-resolved transport into the medical-flow section. It highlights how suspended cells move through the vascular domain and provides a bridge from continuum hemodynamics to particle-coupled blood-flow simulations.",
+    mainMedia: {
+      src: "assets/media/RBC3.mp4",
+      alt: "RBC particle flow visualization",
+      kind: "video"
+    },
+    inlineMedia: []
+  },
+  {
+    id: "hemodynamic_indicators",
+    index: "Showcase 06",
     title: "Hemodynamic indicators",
     blurb: "Derived metrics such as wall shear stress, oscillatory behavior, and residence-time-related indicators.",
     stageText: "This slot is intended for derived hemodynamic quantities that translate raw velocity fields into clinically and mechanistically interpretable markers.",
@@ -245,7 +258,7 @@ const medicalShowcases = [
   },
   {
     id: "larynx_simulation",
-    index: "Showcase 06",
+    index: "Showcase 07",
     title: "Larynx simulation",
     blurb: "Airway and laryngeal flow structures with jet formation, recirculation, and transport patterns relevant to vocal-tract dynamics.",
     stageText: "The larynx block is prepared for airway-focused cases where jet structure and confinement-driven recirculation become the primary visual story.",
@@ -254,7 +267,7 @@ const medicalShowcases = [
   },
   {
     id: "thrombosis_simulation",
-    index: "Showcase 07",
+    index: "Showcase 08",
     title: "Thrombosis simulation",
     blurb: "Flow-coupled platelet transport, activation, and accumulation patterns for clot-growth scenarios.",
     stageText: "This module is reserved for thrombosis-oriented simulations where flow evolution interacts with platelet transport and localized accumulation processes.",
@@ -272,6 +285,23 @@ function createPlaceholder(caseData) {
 }
 
 function createMedicalMedia(media, className) {
+  if (media.kind === "video") {
+    const video = document.createElement("video");
+    video.className = className;
+    video.autoplay = true;
+    video.loop = true;
+    video.muted = true;
+    video.playsInline = true;
+    video.controls = true;
+    video.preload = "metadata";
+
+    const source = document.createElement("source");
+    source.src = media.src;
+    source.type = "video/mp4";
+    video.appendChild(source);
+    return video;
+  }
+
   const image = document.createElement("img");
   image.className = className;
   image.src = media.src;
