@@ -237,9 +237,9 @@ const medicalShowcases = [
   {
     id: "rbc_particle_flow",
     index: "Showcase 05",
-    title: "RBC particle flow",
-    blurb: "Rigid-cell transport in vessel-scale flow to show suspended-cell migration, interaction patterns, and particle-laden hemodynamics.",
-    stageText: "This showcase introduces red-blood-cell-resolved transport into the medical-flow section. It highlights how suspended cells move through the vascular domain and provides a bridge from continuum hemodynamics to particle-coupled blood-flow simulations.",
+    title: "Blood cells flow",
+    blurb: "Blood-cell-resolved transport output showing suspended red blood cells and platelets in vessel-scale flow.",
+    stageText: "This showcase presents blood-cell-flow output with red blood cells and platelets transported through the vascular domain. It highlights suspended-cell motion, interaction patterns, and the transition from continuum hemodynamics to particle-coupled blood-flow visualization.",
     mainMedia: {
       src: "assets/media/RBC3.mp4",
       alt: "RBC particle flow visualization",
